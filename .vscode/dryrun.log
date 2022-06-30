@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/dmitriy/projects/frontend-project-lvl4'
+make -C frontend install
+make: Leaving directory '/home/dmitriy/projects/frontend-project-lvl4'
+ 
