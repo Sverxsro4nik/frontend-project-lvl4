@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { Form, Button } from 'react-bootstrap';
 
 function LoginForm() {
   const validateSchema = yup.object().shape({
@@ -16,10 +17,10 @@ function LoginForm() {
     >
       {
         ({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
-          <form action="" className='col-12 col-md-6 mt-3 mt-mb-0'>
+          <Form action="" className='col-12 col-md-6 mt-3 mt-mb-0'>
             <h1 className='text-center mb-4'>Войти</h1>
-            <div className="form-floating mb-3">
-              <input
+            <Form.Group className="form-floating mb-3">
+              <Form.Control
                 type={`text`}
                 className={`form-control${!errors.username ? '' : ' in-valid'}`}
                 name={`username`}
@@ -30,10 +31,10 @@ function LoginForm() {
                 id={`username`}
                 value={values.username}
               />
-              <label htmlFor="username">Ваш ник</label>
-            </div>
-            <div className="form-floating mb-3">
-            <input
+              <Form.Label htmlFor="username">Ваш ник</Form.Label>
+            </Form.Group>
+            <Form.Group className="form-floating mb-3">
+            <Form.Control
                 type={`password`}
                 className={`form-control${!errors.password ? '' : ' in-valid'}`}
                 name={`password`}
@@ -44,14 +45,16 @@ function LoginForm() {
                 id={`password`}
                 value={values.password}
               />
-              <label htmlFor="password">Пароль</label>
-            </div>
-            <button 
+              <Form.Label htmlFor="password">Пароль</Form.Label>
+            </Form.Group>
+            <Button
+              variant="outline-primary"
+              className='w-100 mb-3'
               type={`submit`}
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
-            >Войти</button>
-          </form>
+            >Войти</Button>
+          </Form>
         )
       }
     </Formik>
