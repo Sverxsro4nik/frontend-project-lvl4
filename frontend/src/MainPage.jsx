@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import { Container, Navbar } from 'react-bootstrap';
 
@@ -8,6 +8,17 @@ import NotFound from './components/NotFound';
 
 import React from 'react';
 import ChatPage from './components/ChatPage/ChatPage.jsx';
+import { useAuth } from './hooks/useAuth.js';
+
+
+const ChatRoute = ({ children }) => {
+  const { user } = useAuth('');
+  const location = useLocation();
+
+  return (
+    user ? children : <Navigate to="login" state={{from: location}} />
+  )
+}
 
 function MainPage() {
   return (
@@ -20,7 +31,14 @@ function MainPage() {
           </Container>
         </Navbar>
         <Routes>
-          <Route exact path='/' element={<ChatPage />}></Route>
+        <Route
+            exact
+            path="/"
+            element={(
+              <ChatRoute>
+                <ChatPage />
+              </ChatRoute>
+            )} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/chat' element={<ChatPage />} />
           <Route path='*' element={<NotFound />} />

@@ -19,7 +19,7 @@ const getData = async (username, password) => {
 function LoginForm() {
   const [isAuth, setIsAuth] = useState(false);
   const userContainer = useRef(null);
-  const { logIn, user } = useAuth('');
+  const { logIn } = useAuth('');
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -38,12 +38,11 @@ function LoginForm() {
       onSubmit={ async (values) => {
         try {
           const token = await getData(values.username, values.password);
-          logIn(token);
+          logIn({token});
           values.username = '';
           values.password = '';
           setIsAuth(false);
-          console.log(user);
-          const { from } = location.state || { from: { pathname: '/' } };
+          const { from } = location.state || { from: { pathname: '/chat' } };
           navigate(from);
         } catch (err) {
           if (err.isAxiosError && err.response.status === 401) {

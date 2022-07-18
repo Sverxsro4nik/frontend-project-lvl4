@@ -2,11 +2,10 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { AuthContext } from './AuthContext.js';
 
 function AuthProvider({ children }) {
-  const savedUserData = JSON.parse(localStorage.getItem("user"));
+  const savedUserData = JSON.parse(localStorage.getItem("userId"));
   const [user, setUser] = useState(
-    savedUserData ? { user: savedUserData.username } : null
+    savedUserData ? savedUserData : null
   );
-
   const logIn = useCallback((userData) => {
     localStorage.setItem("userId", JSON.stringify(userData));
     setUser({username: userData.username});
