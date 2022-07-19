@@ -1,8 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
-import { Container, Navbar } from 'react-bootstrap';
-
+import Nav from './components/Nav/Nav.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
 import NotFound from './components/NotFound';
 
@@ -25,11 +24,7 @@ function MainPage() {
     <div className='d-flex flex-column h-100'>
     {
       <Router>
-        <Navbar className='shadow-sm bg-white' bg="light" expand="lg">
-          <Container>
-            <Navbar.Brand href="/">Hexlet Chat</Navbar.Brand>
-          </Container>
-        </Navbar>
+        <Nav />
         <Routes>
         <Route
             exact
