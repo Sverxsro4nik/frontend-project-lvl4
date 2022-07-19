@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
 import getRoutes from '../../routes/routes';
+import { useDispatch, useSelector } from 'react-redux';
 
 const getAuthHeader = () => {
   const userId = JSON.parse(localStorage.getItem('userId'));
@@ -13,17 +14,18 @@ const getAuthHeader = () => {
 }
 
 const ChatPage = () => {
-  const [content, setContent] = useState(null);
+  const channels = useSelector((state) => console.log(state));
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
       const { data } = await axios.get(getRoutes.dataPath(), { headers: getAuthHeader() });
-      setContent(data);
+      console.log(data);
     }
     fetchContent();
   }, []);
   return (
     <div>
-      { content ?  content.channels.map((channel) => <div key={channel.id}>{channel.name}</div>) : <div>загрузка</div> }
+      { channels ?  channels.map((channel) => <div key={channel.id}>{channel.name}</div>) : <div>загрузка</div> }
     </div>
   )
 }
