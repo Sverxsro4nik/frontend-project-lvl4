@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setChannels } from '../../slices/channelsSlice.js';
 import { setMessages } from '../../slices/messagesSlice.js';
+import { Container } from 'react-bootstrap';
+import ChannelsPanel from '../ChannelsPanel/ChannelsPanel';
+import MessagesPanel from '../MessagesPanel/MessagesPanel';
 
 const getAuthHeader = () => {
   const userId = JSON.parse(localStorage.getItem('userId'));
@@ -29,9 +32,12 @@ const ChatPage = () => {
     fetchContent();
   }, [dispatch]);
   return (
-    <div>
-      { allChannels ?  allChannels.map((channel) => <div key={channel.id}>{channel.name}</div>) : <div>загрузка</div> }
-    </div>
+    <Container className="h-100 my-4 overflow-hidden rounded shadow">
+      <div className="row h-100 bg-white flex-md-row">
+          <ChannelsPanel  allChannels={allChannels}/>
+          <MessagesPanel />
+      </div>
+    </Container>
   )
 }
 
