@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
-import { BsArrowRightSquare } from 'react-icons/bs';
+import { ArrowRightSquare } from 'react-bootstrap-icons';
 
 const MessagesPanel = (props) => {
   const allMessages = useSelector((state) => state.messagesReducer.messages);
@@ -26,8 +26,8 @@ const MessagesPanel = (props) => {
                 className='border-0 p-0 ps-2'
                 value=''
               />
-              <Button variant='outline' className="p-0 text-primary btn btn-group-vertical pr-10">
-                <BsArrowRightSquare/>
+              <Button variant='group-vertical'>
+                <ArrowRightSquare size={20} />
               </Button>
             </Form.Group>
           </Form>
