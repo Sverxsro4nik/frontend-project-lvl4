@@ -21,6 +21,7 @@ const getAuthHeader = () => {
 
 const ChatPage = () => {
   const allChannels = useSelector((state) => state.channelsReducer.channels);
+  const defaultActiveChannel = allChannels[0];
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
@@ -34,8 +35,8 @@ const ChatPage = () => {
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">
-          <ChannelsPanel  allChannels={allChannels}/>
-          <MessagesPanel />
+          <ChannelsPanel  allChannels={allChannels} defaultActiveChannel={defaultActiveChannel}/>
+          <MessagesPanel  defaultActiveChannel={defaultActiveChannel}/>
       </div>
     </Container>
   )

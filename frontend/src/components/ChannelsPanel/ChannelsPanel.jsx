@@ -4,9 +4,7 @@ import { Button, Nav } from 'react-bootstrap';
 import Channel from '../Channel/Channel';
 
 const ChannelsPanel = (props) => {
-  const { allChannels } = props;
-  const defaultActiveChannel = allChannels[0].id;
-  console.log(defaultActiveChannel);
+  const { allChannels, defaultActiveChannel } = props;
   return (
     <div className="col-4 col-md-2 border-end pt-5 px-0 bg-light">
       <div className='d-flex justify-content-between mb-2 ps-4 pe-2'>
@@ -19,7 +17,7 @@ const ChannelsPanel = (props) => {
         {allChannels.map((channel) => (
           <Nav.Item key={channel.id} className="w-100" as='li'>
             <Channel name={channel.name}
-              defaultActiveChannel={defaultActiveChannel}
+              defaultActiveChannelId={defaultActiveChannel.id}
               channelId={channel.id}
             />
           </Nav.Item>
