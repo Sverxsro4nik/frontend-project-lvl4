@@ -1,11 +1,41 @@
-import React from 'react';
+import React,{ useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { useAuth } from '../../hooks/useAuth';
 
-const MessagesPanel = (props) => {
+const MessagesPanel = ({ defaultActiveChannel }) => {
+  const { user } = useAuth();
+  console.log(user);
+  const messageRef = useRef(null);
   const allMessages = useSelector((state) => state.messagesReducer.messages);
-  const { defaultActiveChannel } = props;
+  console.log(allMessages);
+  const validationSchema = yup.object().shape({
+    message: yup.string().trim().required('Required'),
+  });
+  useEffect(() => {
+    messageRef.current.focus();
+  }, []);
+  const formik = useFormik({
+    initialValues: {
+      body: '',
+    },
+    onSubmit: values => {
+      const message = {
+        text: values.body,
+        channelId: defaultActiveChannel.id,
+
+      }
+      try {
+
+      } catch(e) {
+
+      }
+    },
+    validateOnChange: validationSchema
+  })
   return (
     <div className='col p-0 h100'>
       <div className='d-flex flex-column h-100'>
@@ -17,18 +47,21 @@ const MessagesPanel = (props) => {
         </div>
         <div id='messages-box' className='chat-messages overflow-auto px-5'></div>
         <div className='mt-auto px-3 py-3'>
-          <Form noValidate className='py-1 border rounded-2'>
-            <Form.Group className='has-validation input-group'>
-              <Form.Control 
-                name="body"
-                aria-label='Новое сообщение'
-                placeholder='Введите сообщение...'
-                className='border-0 p-0 ps-2'
-                value=''
-              />
-              <Button variant='group-vertical'>
-                <ArrowRightSquare size={20} />
-              </Button>
+        <Form noValidate className='py-1 border rounded-2' onSubmit={formik.handleSubmit}>
+          <Form.Group hasvalidation={formik.isValid} className='input-group'>
+            <Form.Control 
+              name='body'
+              ref={messageRef}
+              aria-label='Новое сообщение'
+              placeholder='Введите сообщение...'
+              className='border-0 p-0 ps-2'
+              value={formik.values.body}
+              onChange={formik.handleChange}
+              id='body'
+            />
+            <Button variant='group-vertical'disabled={formik.isSubmitting} onClick={formik.handleSubmit}>
+              <ArrowRightSquare size={20} />
+            </Button>
             </Form.Group>
           </Form>
         </div>
