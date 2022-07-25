@@ -21,7 +21,8 @@ const getAuthHeader = () => {
 
 const ChatPage = () => {
   const allChannels = useSelector((state) => state.channelsReducer.channels);
-  const defaultActiveChannel = allChannels[0];
+  const activeChannel = useSelector((state) => state.channelsReducer.defaultChannel);
+  const defaultActiveChannel = allChannels[activeChannel];
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
