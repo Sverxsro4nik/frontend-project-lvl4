@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Message from '../Message/Message';
 import NewMessageForm from '../NewMessageForm/NewMessageForm';
 
 const MessagesPanel = () => {
@@ -17,11 +18,7 @@ const MessagesPanel = () => {
           <span className='text-muted'>{allMessages.length} сообщений</span>
         </div>
         <div id='messages-box' className='chat-messages overflow-auto px-5'>
-          {allMessages.map((message) => (<div className='text-break mb-2' key={message.id}>
-              <b>{message.username}</b>
-              : {message.text}
-            </div>)
-          )}
+          {allMessages.map((message) => <Message message={message}/>)}
           <NewMessageForm activeChannel={activeChannel}/>
         </div>
       </div>
