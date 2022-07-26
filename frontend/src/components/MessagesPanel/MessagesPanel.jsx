@@ -4,12 +4,14 @@ import { Form, Button } from 'react-bootstrap';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth, useSocketApi } from '../../hooks/useAuth';
 
 const MessagesPanel = ({ defaultActiveChannel }) => {
   const { user } = useAuth();
+  const socketApi = useSocketApi();
   const messageRef = useRef(null);
   const allMessages = useSelector((state) => state.messagesReducer.messages);
+  console.log(allMessages);
   const validationSchema = yup.object().shape({
     message: yup.string().trim().required('Required'),
   });
@@ -20,16 +22,19 @@ const MessagesPanel = ({ defaultActiveChannel }) => {
     initialValues: {
       body: '',
     },
-    onSubmit: values => {
+    onSubmit: async (values) => {
       const message = {
         text: values.body,
         channelId: defaultActiveChannel.id,
         username: user.username,
-      }
+      };
       try {
-
+        console.log('send message')
+        await socketApi.sendMessage(message);
+        console.log(message);
+        messageRef.current.value = '';
       } catch(e) {
-
+        console.log(e.message);
       }
     },
     validateOnChange: validationSchema
@@ -46,7 +51,7 @@ const MessagesPanel = ({ defaultActiveChannel }) => {
         <div id='messages-box' className='chat-messages overflow-auto px-5'></div>
         <div className='mt-auto px-3 py-3'>
         <Form noValidate className='py-1 border rounded-2' onSubmit={formik.handleSubmit}>
-          <Form.Group hasvalidation={formik.isValid} className='input-group'>
+          <Form.Group className='input-group'>
             <Form.Control 
               name='body'
               ref={messageRef}
