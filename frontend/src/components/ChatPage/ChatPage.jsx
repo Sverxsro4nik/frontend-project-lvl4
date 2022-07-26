@@ -11,7 +11,7 @@ import ChannelsPanel from '../ChannelsPanel/ChannelsPanel';
 import MessagesPanel from '../MessagesPanel/MessagesPanel';
 
 const getAuthHeader = () => {
-  const userId = JSON.parse(localStorage.getItem('userId'));
+  const userId = JSON.parse(localStorage.getItem('user'));
   if (userId && userId.token) {
     return { Authorization: `Bearer ${userId.token}` };
   }
@@ -22,7 +22,7 @@ const getAuthHeader = () => {
 const ChatPage = () => {
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const activeChannel = useSelector((state) => state.channelsReducer.defaultChannel);
-  const defaultActiveChannel = allChannels[activeChannel];
+  const defaultActiveChannel = allChannels[activeChannel ?? 0];
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
@@ -32,7 +32,8 @@ const ChatPage = () => {
       dispatch(setMessages(messages));
     }
     fetchContent();
-  }, [dispatch]);
+  }, []);
+  
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">

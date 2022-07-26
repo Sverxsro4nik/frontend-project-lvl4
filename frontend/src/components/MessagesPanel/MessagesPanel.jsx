@@ -8,10 +8,8 @@ import { useAuth } from '../../hooks/useAuth';
 
 const MessagesPanel = ({ defaultActiveChannel }) => {
   const { user } = useAuth();
-  console.log(user);
   const messageRef = useRef(null);
   const allMessages = useSelector((state) => state.messagesReducer.messages);
-  console.log(allMessages);
   const validationSchema = yup.object().shape({
     message: yup.string().trim().required('Required'),
   });
@@ -26,7 +24,7 @@ const MessagesPanel = ({ defaultActiveChannel }) => {
       const message = {
         text: values.body,
         channelId: defaultActiveChannel.id,
-
+        username: user.username,
       }
       try {
 

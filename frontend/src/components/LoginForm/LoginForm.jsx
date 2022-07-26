@@ -13,7 +13,7 @@ const getData = async (username, password) => {
     username: username,
     password: password,
   }).then(({ data }) => data);
-  return token;
+  return {token, username};
 }
 
 function LoginForm() {
@@ -38,7 +38,7 @@ function LoginForm() {
       onSubmit={ async (values) => {
         try {
           const token = await getData(values.username, values.password);
-          logIn({token});
+          logIn(token);
           values.username = '';
           values.password = '';
           setIsAuth(false);
