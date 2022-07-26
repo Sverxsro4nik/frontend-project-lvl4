@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button, Container, Navbar } from 'react-bootstrap';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/hooks';
 
 const Nav = () => {
   const { user } = useAuth('');

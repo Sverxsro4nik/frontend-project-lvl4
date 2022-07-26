@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 import getRoutes from '../../routes/routes';
-import { useAuth } from '../../hooks/useAuth.js';
+import { useAuth } from '../../hooks/hooks.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const getData = async (username, password) => {

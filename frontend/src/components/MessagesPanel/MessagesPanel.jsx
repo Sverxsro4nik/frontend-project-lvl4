@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useAuth, useSocketApi } from '../../hooks/useAuth';
+import { useAuth, useSocketApi } from '../../hooks/hooks';
 
 const MessagesPanel = ({ defaultActiveChannel }) => {
   const { user } = useAuth();

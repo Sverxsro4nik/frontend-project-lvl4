@@ -7,7 +7,7 @@ import NotFound from './components/NotFound';
 
 import React from 'react';
 import ChatPage from './components/ChatPage/ChatPage.jsx';
-import { useAuth } from './hooks/useAuth.js';
+import { useAuth } from './hooks/hooks.js';
 
 
 const ChatRoute = ({ children }) => {
