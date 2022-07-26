@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
 
 import AuthProvider from './context/AuthProvider.jsx';
+import { socketContext } from './context/contex.js';
 
 import MainPage from './MainPage.jsx';
 import { addMessage } from './slices/messagesSlice.js';
@@ -10,8 +11,8 @@ const App = () => {
   const socket = io();
   const dispath = useDispatch();
 
-  socket.on("newMessage", ({ message }) => {
-    dispath(addMessage(message));
+  socket.on("newMessage", (payload) => {
+    dispath(addMessage(payload));
   });
   // socket.on("newChannel", ({ channel }) => {
   //   dispath(addChannel(channel));
@@ -23,15 +24,20 @@ const App = () => {
   //   dispath(renameChannel(message));
   // });
 
-  socket.emit('newMessage', ({ message }) => dispath(addMessage(message)));
+  const socketApi = {
+    sendMessage: (...args) => socket.volatile.emit('newMessage', ...args),
+  }
+
   // socket.emit('newChannel', ({ message }) => dispath(addChannel(message)));
   // socket.emit('removeChannel', ({ message }) => dispath(removeChannel(message)));
   // socket.emit('renameChannel', ({ message }) => dispath(renameChannel(message)));
   return (
     <AuthProvider>
-      <div className='h-100' id='chat'>
-        <MainPage />
-      </div>
+      <socketContext.Provider value={socketApi}>
+        <div className='h-100' id='chat'>
+          <MainPage />
+        </div>
+      </socketContext.Provider>
     </AuthProvider>
   )
 }
