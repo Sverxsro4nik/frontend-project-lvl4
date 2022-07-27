@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 22:56:49 2022
+# Make data base, printed on Wed Jul 27 21:04:38 2022
 
 # Variables
 
@@ -79,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/2368,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/2368
+SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1386,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1386
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +109,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2497
+SSH_AGENT_PID = 1481
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -165,7 +167,7 @@ LC_TELEPHONE = ru_RU.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/dmitriy/projects
+OLDPWD = /home/dmitriy
 # default
 .VARIABLES := 
 # automatic
@@ -207,11 +209,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/cf49cef6_aefd_4152_a0ec_f500a1ab967a
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/bc9ff002_a999_4aca_a97f_dc7e674f8643
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.1213
+GNOME_TERMINAL_SERVICE = :1.140
 # default
 SUFFIXES := 
 # environment
@@ -229,7 +231,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 35888
+VSCODE_PID = 5209
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=14/135=10%
 
@@ -285,9 +287,6 @@ start-frontend:
 
 install:
 #  Implicit rule search has not been done.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 2):
@@ -296,6 +295,7 @@ make: *** No rule to make target 'all'.  Stop.
 # files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
+ 
 
 # No 'vpath' search paths.
 
@@ -307,6 +307,6 @@ make: *** No rule to make target 'all'.  Stop.
 # strcache performance: lookups = 25 / hit rate = 28%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/25=4%
-# Finished Make data base on Mon Jul 25 22:56:49 2022
+# Finished Make data base on Wed Jul 27 21:04:38 2022
 
  
