@@ -32,7 +32,7 @@ const ChatPage = () => {
       dispatch(setMessages(messages));
     }
     fetchContent();
-  }, []);
+  }, [dispatch]);
   
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
