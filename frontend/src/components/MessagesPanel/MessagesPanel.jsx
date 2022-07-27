@@ -14,7 +14,7 @@ const MessagesPanel = () => {
       <div className='d-flex flex-column h-100'>
         <MessagesPanelHeader activeChannel={activeChannel} messagesCount={allMessages.length}/>
         <div id='messages-box' className='chat-messages overflow-auto px-5'>
-          {allMessages.map((message) => <Message message={message}/>)}
+          {allMessages.map((message) => <Message message={message} key={message.id} />)}
           <NewMessageForm activeChannel={activeChannel}/>
         </div>
       </div>

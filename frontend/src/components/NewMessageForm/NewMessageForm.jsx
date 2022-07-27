@@ -26,7 +26,6 @@ const NewMessageForm = ({ activeChannel }) => {
         username: user.username,
       };
       try {
-        console.log('send message')
         await socketApi.sendMessage(message);
         values.body = '';
       } catch(e) {
