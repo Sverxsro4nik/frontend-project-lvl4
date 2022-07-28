@@ -6,7 +6,7 @@ import { socketContext } from './context/contex.js';
 
 import MainPage from './MainPage.jsx';
 import { addMessage } from './slices/messagesSlice.js';
-//import {addChannel, removeChannel, renameChannel} from './slices/channelsSlice.js';
+import { addChannel } from './slices/channelsSlice.js';
 const App = () => {
   const socket = io();
   const dispath = useDispatch();
@@ -14,9 +14,9 @@ const App = () => {
   socket.on("newMessage", (payload) => {
     dispath(addMessage(payload));
   });
-  // socket.on("newChannel", ({ channel }) => {
-  //   dispath(addChannel(channel));
-  // });
+  socket.on("newChannel", ({ channel }) => {
+    dispath(addChannel(channel));
+  });
   // socket.on("removeChannel", ({ message }) => {
   //   dispath(removeChannel(message));
   // });
@@ -26,6 +26,7 @@ const App = () => {
 
   const socketApi = {
     sendMessage: (...args) => socket.volatile.emit('newMessage', ...args),
+    newChannel: (...args) => socket.volatile.emit('newChannel', ...args),
   }
 
   // socket.emit('newChannel', ({ message }) => dispath(addChannel(message)));
