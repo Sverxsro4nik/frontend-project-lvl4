@@ -14,13 +14,13 @@ const modalsReducer = createSlice({
       state.isOpened = true;
       state.type = type;
     },
-    closeWindow: (state, {payload}) => {
+    closeModal: (state, {payload}) => {
       state.isOpened = false;
       state.type = null;
     },
   }
 });
 
-export const { openWindow, closeWindow } = modalsReducer.actions;
+export const { openWindow, closeModal } = modalsReducer.actions;
 
 export default modalsReducer.reducer;

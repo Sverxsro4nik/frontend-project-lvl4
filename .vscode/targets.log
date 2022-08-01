@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 27 21:04:38 2022
+# Make data base, printed on Sun Jul 31 21:05:05 2022
 
 # Variables
 
@@ -81,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1386,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1386
+SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/2591,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/2591
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +109,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1481
+SSH_AGENT_PID = 2663
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -167,7 +167,7 @@ LC_TELEPHONE = ru_RU.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/dmitriy
+OLDPWD = /home/dmitriy/projects
 # default
 .VARIABLES := 
 # automatic
@@ -209,11 +209,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/bc9ff002_a999_4aca_a97f_dc7e674f8643
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/49144545_dbee_444a_a263_d65e7d2571cf
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.140
+GNOME_TERMINAL_SERVICE = :1.103
 # default
 SUFFIXES := 
 # environment
@@ -231,7 +231,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 5209
+VSCODE_PID = 6054
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=14/135=10%
 
@@ -295,9 +295,9 @@ install:
 # files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
- 
 
 # No 'vpath' search paths.
+ 
 
 # No general ('VPATH' variable) search path.
 
@@ -307,6 +307,6 @@ install:
 # strcache performance: lookups = 25 / hit rate = 28%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/25=4%
-# Finished Make data base on Wed Jul 27 21:04:38 2022
+# Finished Make data base on Sun Jul 31 21:05:05 2022
 
  

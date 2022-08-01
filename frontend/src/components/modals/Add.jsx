@@ -2,10 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { useSocketApi } from '../../hooks/hooks.js';
-import { setActualChannel } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
   name: yup.string()
@@ -20,25 +19,23 @@ const Add = ({ closeHandler }) => {
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const socketApi = useSocketApi();
   const channelsName = allChannels.map((channel) => channel.name);
-  const dispatch = useDispatch();
   const refContainer = useRef('');
   useEffect(() => {
     refContainer.current.focus();
   }, []);
+  const close = () => {
+    closeHandler();
+  }
   const formik = useFormik({
     initialValues: {
       name: '',
     },
     validationSchema: validationChannelsSchema(channelsName),
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
+      const { name } = values;
       try {
-        const { name } = values;
-        const channel = {name};
-        const data = await socketApi.newChannel(channel);
-        console.log(data);
+        socketApi.newChannel(name, close);
         // TODO: Разобраться с присвоением и получением у id канала
-        // dispatch(setActualChannel(data.id));
-        closeHandler();
         values.name = '';
       } catch(e) {
         console.log(e.message);

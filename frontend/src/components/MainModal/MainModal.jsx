@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import modalsWindow from '../modals';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeWindow } from '../../slices/modalSlice';
+import { closeModal } from '../../slices/modalSlice';
 
 const MainModal = () => {
   const isOpened = useSelector((state) => state.modalsReducer.isOpened);
@@ -10,13 +10,13 @@ const MainModal = () => {
   const dispatch = useDispatch();
 
   const closeHandler = () => {
-    dispatch(closeWindow());
+    dispatch(closeModal());
   }
 
   const ActyalModal = modalsWindow(type);
   return (
     <>
-      <Modal show={isOpened} closeWindow={closeHandler} centered>
+      <Modal show={isOpened} onHide={closeHandler} centered>
         {ActyalModal && <ActyalModal closeHandler={closeHandler}/>}
       </Modal>
     </>

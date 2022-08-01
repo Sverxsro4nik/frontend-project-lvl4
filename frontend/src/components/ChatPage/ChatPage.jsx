@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 import getRoutes from '../../routes/routes';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { setChannels } from '../../slices/channelsSlice.js';
 import { setMessages } from '../../slices/messagesSlice.js';
@@ -20,9 +20,6 @@ const getAuthHeader = () => {
 }
 
 const ChatPage = () => {
-  const allChannels = useSelector((state) => state.channelsReducer.channels);
-  const activeChannel = useSelector((state) => state.channelsReducer.defaultChannel);
-  const defaultActiveChannel = allChannels[activeChannel ?? 0];
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
@@ -38,7 +35,7 @@ const ChatPage = () => {
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">
           <ChannelsPanel/>
-          <MessagesPanel  defaultActiveChannel={defaultActiveChannel}/>
+          <MessagesPanel/>
       </div>
     </Container>
   )
