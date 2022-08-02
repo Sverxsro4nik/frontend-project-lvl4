@@ -7,6 +7,7 @@ import { closeModal } from '../../slices/modalSlice';
 const MainModal = () => {
   const isOpened = useSelector((state) => state.modalsReducer.isOpened);
   const type = useSelector((state) => state.modalsReducer.type);
+  const changed = useSelector((state) => state.modalsReducer.changed);
   const dispatch = useDispatch();
 
   const closeHandler = () => {
@@ -17,7 +18,7 @@ const MainModal = () => {
   return (
     <>
       <Modal show={isOpened} onHide={closeHandler} centered>
-        {ActyalModal && <ActyalModal closeHandler={closeHandler}/>}
+        {ActyalModal && <ActyalModal closeHandler={closeHandler} changed={changed}/>}
       </Modal>
     </>
   )

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isOpened: false,
   type: null,
+  changed: null
 };
 
 const modalsReducer = createSlice({
@@ -10,13 +11,15 @@ const modalsReducer = createSlice({
   initialState,
   reducers: {
     openWindow: (state, {payload}) => {
-      const { type } = payload;
+      const { type, id } = payload;
       state.isOpened = true;
       state.type = type;
+      state.changed = id ?? null;
     },
     closeModal: (state, {payload}) => {
       state.isOpened = false;
       state.type = null;
+      state.changed = null;
     },
   }
 });

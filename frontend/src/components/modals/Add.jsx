@@ -26,6 +26,7 @@ const Add = ({ closeHandler }) => {
   const close = () => {
     closeHandler();
   }
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -35,7 +36,6 @@ const Add = ({ closeHandler }) => {
       const { name } = values;
       try {
         socketApi.newChannel(name, close);
-        // TODO: Разобраться с присвоением и получением у id канала
         values.name = '';
       } catch(e) {
         console.log(e.message);
@@ -62,8 +62,13 @@ const Add = ({ closeHandler }) => {
             </form>
           </Modal.Body>
           <Modal.Footer>
-          <FormControl className="me-2 btn btn-secondary" type="button" value="Отменить" onClick={closeHandler} />
-            <FormControl className="btn btn-primary" type="submit" value="Добавить" onClick={formik.handleSubmit} />
+            <FormControl className="me-2 btn btn-secondary" type="button" value="Отменить" onClick={closeHandler} />
+            <FormControl 
+              className="btn btn-primary"
+              type="submit"
+              value="Добавить"
+              onClick={formik.handleSubmit}
+            />
           </Modal.Footer>
         </Modal.Dialog>
       </>

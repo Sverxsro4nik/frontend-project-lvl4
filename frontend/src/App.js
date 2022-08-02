@@ -5,8 +5,8 @@ import AuthProvider from './context/AuthProvider.jsx';
 import { socketContext } from './context/contex.js';
 
 import MainPage from './MainPage.jsx';
-import { addMessage } from './slices/messagesSlice.js';
-import { addChannel, setActualChannel } from './slices/channelsSlice.js';
+import { addMessage, removeMessage } from './slices/messagesSlice.js';
+import { addChannel, setActualChannel, deleteChannel } from './slices/channelsSlice.js';
 const App = () => {
   const socket = io();
   const dispacth = useDispatch();
@@ -15,12 +15,11 @@ const App = () => {
     dispacth(addMessage(payload));
   });
   socket.on("newChannel", (payload) => {
-    console.log('channel in socket.on', payload);
     dispacth(addChannel(payload));
   });
-  // socket.on("removeChannel", ({ message }) => {
-  //   dispath(removeChannel(message));
-  // });
+  socket.on("removeChannel", (payload) => {
+    dispacth(deleteChannel(payload.id));
+  });
   // socket.on("renameChannel", ({ message }) => {
   //   dispath(renameChannel(message));
   // });
@@ -37,9 +36,16 @@ const App = () => {
           return response.data;
         }
       });
-    }
+    },
+    removeChannel: (id) => {
+      socket.emit('removeChannel', { id }, (response) => {
+        const { status } = response;
+        if (status === 'ok') {
+          dispacth(removeMessage(id));
+        }
+      })
+    },
   }
-  // socket.emit('removeChannel', ({ message }) => dispath(removeChannel(message)));
   // socket.emit('renameChannel', ({ message }) => dispath(renameChannel(message)));
   return (
     <AuthProvider>
