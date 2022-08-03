@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Sverxsro4nik/frontend-project-lvl4/issues"
   },
-  "homepage": "https://github.com/Sverxsro4nik/frontend-project-lvl4#readme"
+  "homepage": "https://github.com/Sverxsro4nik/frontend-project-lvl4#readme",
+  "dependencies": {
+    "@hexlet/chat-server": "^1.1.6"
+  }
 }
