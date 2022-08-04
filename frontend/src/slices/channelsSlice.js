@@ -22,7 +22,6 @@ const channelsReducer = createSlice({
       state.channels = state.channels.filter((channel) => channel.id !== payload);
     },
     channelRename(state, { payload }) {
-      console.log('payload in slice', payload);
       const { id, name } = payload;
       const channel = state.channels.find((channel) => channel.id === id);
       channel.name = name;
