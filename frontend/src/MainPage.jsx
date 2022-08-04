@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 
 import Nav from './components/Nav/Nav.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
-import NotFound from './components/NotFound';
+import NotFound from './components/Pages/NotFountPage/NotFound';
 
 import React from 'react';
-import ChatPage from './components/ChatPage/ChatPage.jsx';
+import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './hooks/hooks.js';
 
 

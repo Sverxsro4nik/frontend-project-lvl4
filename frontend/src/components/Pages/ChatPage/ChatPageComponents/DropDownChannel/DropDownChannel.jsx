@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { openWindow } from '../../slices/modalSlice';
+import { openWindow } from '../../../../../slices/modalSlice';
 
 const DropDownChannel = ({ name, id, handleClick, currentChannelId }) => {
   const variant = id === currentChannelId ? 'secondary' : 'light';

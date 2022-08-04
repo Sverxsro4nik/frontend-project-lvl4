@@ -4,7 +4,7 @@ import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import { useSocketApi } from '../../hooks/hooks.js';
 
 // BEGIN (write your solution here)
-const Rename = ({ closeHandler, changed, allChannels }) => {
+const Rename = ({ closeHandler, changed }) => {
   const refContainer = useRef('');
   const socketApi = useSocketApi();
   const formik = useFormik({

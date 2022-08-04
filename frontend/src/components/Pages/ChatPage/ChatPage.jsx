@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-import getRoutes from '../../routes/routes';
+import getRoutes from '../../../routes/routes';
 import { useDispatch } from 'react-redux';
 
-import { setChannels } from '../../slices/channelsSlice.js';
-import { setMessages } from '../../slices/messagesSlice.js';
+import { setChannels } from '../../../slices/channelsSlice.js';
+import { setMessages } from '../../../slices/messagesSlice.js';
 import { Container } from 'react-bootstrap';
-import ChannelsPanel from '../ChannelsPanel/ChannelsPanel';
-import MessagesPanel from '../MessagesPanel/MessagesPanel';
+import ChannelsPanel from './ChatPageComponents/ChannelsPanel/ChannelsPanel';
+import MessagesPanel from './ChatPageComponents/MessagesPanel/MessagesPanel';
 
 const getAuthHeader = () => {
   const userId = JSON.parse(localStorage.getItem('user'));

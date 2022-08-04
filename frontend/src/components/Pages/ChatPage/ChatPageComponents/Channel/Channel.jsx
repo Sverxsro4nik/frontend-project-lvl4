@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setActualChannel } from '../../slices/channelsSlice';
+import { setActualChannel } from '../../../../../slices/channelsSlice';
 import DropDownChannel from '../DropDownChannel/DropDownChannel';
 
 const Channel = ({ channel }) => {
