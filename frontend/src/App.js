@@ -6,7 +6,7 @@ import { socketContext } from './context/contex.js';
 
 import MainPage from './MainPage.jsx';
 import { addMessage, removeMessage } from './slices/messagesSlice.js';
-import { addChannel, setActualChannel, deleteChannel } from './slices/channelsSlice.js';
+import { addChannel, setActualChannel, deleteChannel, channelRename } from './slices/channelsSlice.js';
 const App = () => {
   const socket = io();
   const dispacth = useDispatch();
@@ -20,9 +20,10 @@ const App = () => {
   socket.on("removeChannel", (payload) => {
     dispacth(deleteChannel(payload.id));
   });
-  // socket.on("renameChannel", ({ message }) => {
-  //   dispath(renameChannel(message));
-  // });
+  socket.on('renameChannel', (payload) => {
+    console.log('payload in socked', payload);
+    dispacth(channelRename(payload));
+  });
 
   const socketApi = {
     sendMessage: (...args) => socket.emit('newMessage', ...args),
@@ -45,14 +46,14 @@ const App = () => {
         }
       })
     },
+    renameChannel: ({name, id}) => socket.emit('renameChannel', {name, id}),
   }
-  // socket.emit('renameChannel', ({ message }) => dispath(renameChannel(message)));
   return (
     <AuthProvider>
       <socketContext.Provider value={socketApi}>
-        <div className='h-100' id='chat'>
-          <MainPage />
-        </div>
+          <div className='h-100' id='chat'>
+            <MainPage />
+          </div>
       </socketContext.Provider>
     </AuthProvider>
   )

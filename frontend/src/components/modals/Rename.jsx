@@ -1,25 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { useSocketApi } from '../../hooks/hooks.js';
 
 // BEGIN (write your solution here)
-const Rename = ({ show, closeWindow, actualTaskId, renameTask}) => {
+const Rename = ({ closeHandler, changed, allChannels }) => {
   const refContainer = useRef('');
+  const socketApi = useSocketApi();
   const formik = useFormik({
     initialValues: {
       body: '',
     },
-    onSubmit: values => {
-      renameTask(actualTaskId, values.body);
-      closeWindow();
-      values.body = '';
+    onSubmit: (values) => {
+      const { body } = values;
+      socketApi.renameChannel({name: body, id: changed});
+      closeHandler();
     },
   });
   return (
-    <Modal show={show} onHide={closeWindow}>
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Rename</Modal.Title>
+          <Modal.Title>Переименовать канал</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -35,10 +36,10 @@ const Rename = ({ show, closeWindow, actualTaskId, renameTask}) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <FormControl className="btn btn-primary" type="submit" value="submit" onClick={formik.handleSubmit} />
+          <FormControl className="btn btn-primary" type="submit" value="Отменить" onClick={closeHandler} />
+          <FormControl className="btn btn-primary" type="submit" value="Отправить" onClick={formik.handleSubmit}/>
         </Modal.Footer>
       </Modal.Dialog>
-    </Modal>
   )
 };
 

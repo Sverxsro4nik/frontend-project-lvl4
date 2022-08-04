@@ -8,6 +8,7 @@ const MainModal = () => {
   const isOpened = useSelector((state) => state.modalsReducer.isOpened);
   const type = useSelector((state) => state.modalsReducer.type);
   const changed = useSelector((state) => state.modalsReducer.changed);
+  const allChannels = useSelector((state) => state.channelsReducer.channels);
   const dispatch = useDispatch();
 
   const closeHandler = () => {
@@ -18,7 +19,7 @@ const MainModal = () => {
   return (
     <>
       <Modal show={isOpened} onHide={closeHandler} centered>
-        {ActyalModal && <ActyalModal closeHandler={closeHandler} changed={changed}/>}
+        {ActyalModal && <ActyalModal closeHandler={closeHandler} changed={changed} allChannels={allChannels}/>}
       </Modal>
     </>
   )

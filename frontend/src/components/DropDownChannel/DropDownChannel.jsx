@@ -11,6 +11,10 @@ const DropDownChannel = ({ name, id, handleClick, currentChannelId }) => {
     dispatch(openWindow({type: 'removing', id}))
   };
   
+  const openRenameChannelWindow = () => {
+    dispatch(openWindow({type: 'renaming', id}))
+  }
+
   return (
     <Dropdown className="d-flex btn-group" as={ButtonGroup}>
       <Button variant={variant} 
@@ -23,7 +27,7 @@ const DropDownChannel = ({ name, id, handleClick, currentChannelId }) => {
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={(id) => openRemoveChannelWindow(id)}>Удалить</Dropdown.Item>
-        <Dropdown.Item>Переименовать</Dropdown.Item>
+        <Dropdown.Item onClick={(id => openRenameChannelWindow(id))}>Переименовать</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )
