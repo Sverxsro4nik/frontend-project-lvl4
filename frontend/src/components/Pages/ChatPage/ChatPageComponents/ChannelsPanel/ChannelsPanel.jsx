@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsPlusSquare } from "react-icons/bs";
 import { Button, Nav } from 'react-bootstrap';
-import Channel from '../Channel';
+import Channel from '../Channel/Channel.jsx';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { openWindow } from '../../../../../slices/modalSlice';

@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import Nav from './components/Nav/Nav.jsx';
-import LoginPage from './components/LoginPage/LoginPage.jsx';
+import LoginPage from './components/Pages/LoginPage/LoginPage.jsx';
 import NotFound from './components/Pages/NotFountPage/NotFound';
 
 import React from 'react';

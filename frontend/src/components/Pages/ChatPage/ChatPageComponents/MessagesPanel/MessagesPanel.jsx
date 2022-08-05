@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Message from '../Message/Message';
 import MessagesPanelHeader from '../MessagesPanelHeader/MessagesPanelHeader';
-import NewMessageForm from '../../../../NewMessageForm/NewMessageForm';
+import NewMessageForm from '../NewMessageForm/NewMessageForm.jsx';
 
 const MessagesPanel = () => {
   const allMessages = useSelector((state) => state.messagesReducer.messages);

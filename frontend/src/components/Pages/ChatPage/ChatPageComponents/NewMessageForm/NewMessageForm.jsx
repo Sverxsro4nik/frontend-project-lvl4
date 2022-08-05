@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
-import { useAuth, useSocketApi } from '../../hooks/hooks.js';
+import { useAuth, useSocketApi } from '../../../../../hooks/hooks.js';
 
 const NewMessageForm = ({ activeChannel }) => {
   const { user } = useAuth();

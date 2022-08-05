@@ -1,6 +1,6 @@
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import imagePath from './loginPage.jpeg';
-import LoginForm from "../LoginForm/LoginForm.jsx";
+import LoginForm from "./LoginPageComponents/LoginForm/LoginForm.jsx";
 
 const LoginPage = () => {
   return (
