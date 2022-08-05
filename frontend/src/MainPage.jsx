@@ -8,6 +8,8 @@ import NotFound from './components/Pages/NotFountPage/NotFound';
 import React from 'react';
 import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './hooks/hooks.js';
+import getRoutes from './routes/routes.js';
+import SignUp from './components/SignUp/SignUp.jsx';
 
 
 const ChatRoute = ({ children }) => {
@@ -34,8 +36,9 @@ function MainPage() {
                 <ChatPage />
               </ChatRoute>
             )} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/chat' element={<ChatPage />} />
+          <Route path={getRoutes.loginPage()} element={<LoginPage />} />
+          <Route path={getRoutes.chatPage()} element={<ChatPage />} />
+          <Route path={getRoutes.signUpPage()} element={<SignUp />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

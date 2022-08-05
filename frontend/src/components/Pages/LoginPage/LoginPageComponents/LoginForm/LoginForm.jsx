@@ -42,7 +42,7 @@ function LoginForm() {
           values.username = '';
           values.password = '';
           setIsAuth(false);
-          const { from } = location.state || { from: { pathname: '/chat' } };
+          const { from } = location.state || { from: { pathname: getRoutes.chatPage() } };
           navigate(from);
         } catch (err) {
           if (err.isAxiosError && err.response.status === 401) {

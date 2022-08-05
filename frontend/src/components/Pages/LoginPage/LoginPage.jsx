@@ -1,4 +1,5 @@
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import getRoutes from '../../../routes/routes';
 import imagePath from './loginPage.jpeg';
 import LoginForm from "./LoginPageComponents/LoginForm/LoginForm.jsx";
 
@@ -19,7 +20,7 @@ const LoginPage = () => {
             <Card.Footer className="p-4">
               <div className="text-center">
                 <span>Нет аккаунта? </span>
-                <a href='/'>Регистрация</a>
+                <a href={getRoutes.signUpPage()}>Регистрация</a>
               </div>
             </Card.Footer>
           </Card>
