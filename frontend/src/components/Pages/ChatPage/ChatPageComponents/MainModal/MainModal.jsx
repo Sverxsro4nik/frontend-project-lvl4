@@ -13,16 +13,22 @@ const MainModal = () => {
 
   const closeHandler = () => {
     dispatch(closeModal());
-  }
+  };
 
   const ActyalModal = modalsWindow(type);
   return (
     <>
       <Modal show={isOpened} onHide={closeHandler} centered>
-        {ActyalModal && <ActyalModal closeHandler={closeHandler} changed={changed} allChannels={allChannels}/>}
+        {ActyalModal && (
+          <ActyalModal
+            closeHandler={closeHandler}
+            changed={changed}
+            allChannels={allChannels}
+          />
+        )}
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default MainModal;

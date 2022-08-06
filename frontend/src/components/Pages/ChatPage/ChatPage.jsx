@@ -16,29 +16,31 @@ const getAuthHeader = () => {
     return { Authorization: `Bearer ${userId.token}` };
   }
 
-  return {}
-}
+  return {};
+};
 
 const ChatPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchContent = async () => {
-      const { data } = await axios.get(getRoutes.dataPath(), { headers: getAuthHeader() });
+      const { data } = await axios.get(getRoutes.dataPath(), {
+        headers: getAuthHeader(),
+      });
       const { channels, messages } = data;
       dispatch(setChannels(channels));
       dispatch(setMessages(messages));
-    }
+    };
     fetchContent();
   }, [dispatch]);
-  
+
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">
-          <ChannelsPanel/>
-          <MessagesPanel/>
+        <ChannelsPanel />
+        <MessagesPanel />
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default ChatPage
+export default ChatPage;

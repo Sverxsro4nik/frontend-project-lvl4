@@ -7,6 +7,6 @@ const getRoutes = {
   chatPage: () => '/',
   loginPage: () => '/login',
   signUpPage: () => '/signup',
-}
+};
 
 export default getRoutes;

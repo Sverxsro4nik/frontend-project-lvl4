@@ -1,4 +1,4 @@
-const ruLocales =  {
+const ruLocales = {
   translation: {
     modals: {
       addChannel: 'Добавить канал',
