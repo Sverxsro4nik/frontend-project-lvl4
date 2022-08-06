@@ -1,13 +1,24 @@
 import { useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 import AuthProvider from './context/AuthProvider.jsx';
 import { socketContext } from './context/contex.js';
 
+import resources from './locales/locales.js';
 import MainPage from './MainPage.jsx';
 import { addMessage, removeMessage } from './slices/messagesSlice.js';
 import { addChannel, setActualChannel, deleteChannel, channelRename } from './slices/channelsSlice.js';
 const App = () => {
+  const defaultlanguage = 'ru';
+  i18next
+    .use(initReactI18next)
+    .init({
+      lng: defaultlanguage,
+      debug: false,
+      resources
+    })
   const socket = io();
   const dispacth = useDispatch();
 

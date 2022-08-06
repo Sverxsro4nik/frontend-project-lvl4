@@ -2,38 +2,22 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
- 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
- 
-# Make data base, printed on Thu Aug  4 21:29:40 2022
- 
+# Make data base, printed on Sat Aug  6 18:25:44 2022
 
 # Variables
- 
 
- 
 # automatic
- 
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
- 
 ?F = $(notdir $?)
- 
 # environment
- 
 PAPERSIZE = a4
- 
 # environment
 DESKTOP_SESSION = cinnamon
 # default
@@ -97,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1348,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1348
+SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1346,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1346
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -125,7 +109,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1420
+SSH_AGENT_PID = 1417
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -139,7 +123,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/dmitriy/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /home/dmitriy/.config/Code/CachedData/da76f93349a72022ca4670c1b84860304616aaa2
 # environment
 LOGNAME = dmitriy
 # environment
@@ -193,7 +177,7 @@ LANGUAGE = en_GB
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-d4acccb7-1.69.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-d4acccb7-1.70.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -225,11 +209,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/eea98acc_f742_4d70_9c30_4fcd9a88fb86
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f845c136_98ba_42c1_88e1_c3d08f1d7c48
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.103
+GNOME_TERMINAL_SERVICE = :1.106
 # default
 SUFFIXES := 
 # environment
@@ -247,7 +231,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 5649
+VSCODE_PID = 5831
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=14/135=10%
 
@@ -257,7 +241,7 @@ VSCODE_PID = 5649
 
 # Directories
 
-# . (device 2053, inode 60162049): 12 files, no impossibilities.
+# . (device 2053, inode 7733800): 12 files, no impossibilities.
 
 # 12 files, no impossibilities in 1 directories.
 
@@ -277,7 +261,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-03 21:55:18.303573764
+#  Last modified 2022-08-05 20:47:04.562409982
 #  File has been updated.
 #  Successfully updated.
 
@@ -304,6 +288,7 @@ start-frontend:
 
 # Not a target:
 .DEFAULT:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -311,9 +296,7 @@ start-frontend:
 deploy:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 14):
 	git push heroku main
 
@@ -338,6 +321,6 @@ install:
 # strcache performance: lookups = 31 / hit rate = 29%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Thu Aug  4 21:29:40 2022
+# Finished Make data base on Sat Aug  6 18:25:44 2022
 
  

@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 
 // BEGIN (write your solution here)
 const Rename = ({ closeHandler, changed }) => {
+  const { t } = useTranslation();
   const refContainer = useRef('');
   const socketApi = useSocketApi();
   const formik = useFormik({
@@ -20,7 +22,7 @@ const Rename = ({ closeHandler, changed }) => {
   return (
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Переименовать канал</Modal.Title>
+          <Modal.Title>{t('modals.renameChannel')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -36,8 +38,8 @@ const Rename = ({ closeHandler, changed }) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <FormControl className="btn btn-primary" type="submit" value="Отменить" onClick={closeHandler} />
-          <FormControl className="btn btn-primary" type="submit" value="Отправить" onClick={formik.handleSubmit}/>
+          <FormControl className="btn btn-primary" type="submit" value={t('modals.cancelButton')} onClick={closeHandler} />
+          <FormControl className="btn btn-primary" type="submit" value={t('modals.sendButton')} onClick={formik.handleSubmit}/>
         </Modal.Footer>
       </Modal.Dialog>
   )

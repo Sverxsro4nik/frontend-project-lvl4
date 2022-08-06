@@ -1,21 +1,23 @@
 import React, { useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
-import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { Modal, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { useSocketApi } from '../../hooks/hooks.js';
 
-const validationChannelsSchema = (channels) => yup.object().shape({
+const validationChannelsSchema = (channels, text) => yup.object().shape({
   name: yup.string()
     .trim()
-    .required()
-    .min(3)
-    .max(20)
-    .notOneOf(channels)
+    .required(text('required'))
+    .min(3, text('min'))
+    .max(20, text('max'))
+    .notOneOf(channels, text('duplicate'))
 });
 
 const Add = ({ closeHandler }) => {
+  const { t } = useTranslation();
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const socketApi = useSocketApi();
   const channelsName = allChannels.map((channel) => channel.name);
@@ -46,7 +48,7 @@ const Add = ({ closeHandler }) => {
       <>
         <Modal.Dialog>
           <Modal.Header closeButton={closeHandler}>
-            <Modal.Title>Добавить канал</Modal.Title>
+            <Modal.Title>{t('modals.addChannel')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -57,16 +59,21 @@ const Add = ({ closeHandler }) => {
                   name="name"
                   required=""
                   onChange={formik.handleChange}
-                  value={formik.values.name} />
+                  value={formik.values.name}/>
               </FormGroup>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <FormControl className="me-2 btn btn-secondary" type="button" value="Отменить" onClick={closeHandler} />
+            <FormControl 
+              className="me-2 btn btn-secondary"
+              type="button"
+              value={t('modals.cancelButton')}
+              onClick={closeHandler}
+            />
             <FormControl 
               className="btn btn-primary"
               type="submit"
-              value="Добавить"
+              value={t('modals.addButton')}
               onClick={formik.handleSubmit}
             />
           </Modal.Footer>
