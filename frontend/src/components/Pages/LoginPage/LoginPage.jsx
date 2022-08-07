@@ -1,9 +1,11 @@
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import getRoutes from '../../../routes/routes';
 import imagePath from './loginPage.jpeg';
 import LoginForm from './LoginPageComponents/LoginForm/LoginForm.jsx';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   return (
     <Container className="h-100" fluid>
       <Row className="justify-content-center align-content-center h-100">
@@ -23,8 +25,8 @@ const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>Нет аккаунта? </span>
-                <a href={getRoutes.signUpPage()}>Регистрация</a>
+                <span>{t('notAccount')} </span>
+                <a href={getRoutes.signUpPage()}>{t('signUp')}</a>
               </div>
             </Card.Footer>
           </Card>

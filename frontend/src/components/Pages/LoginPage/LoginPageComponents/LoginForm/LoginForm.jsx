@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 import getRoutes from '../../../../../routes/routes';
 import { useAuth } from '../../../../../hooks/hooks.js';
@@ -19,6 +20,7 @@ const getData = async (username, password) => {
 };
 
 function LoginForm() {
+  const { t } = useTranslation();
   const [isAuth, setIsAuth] = useState(false);
   const userContainer = useRef(null);
   const { logIn } = useAuth('');
@@ -30,14 +32,8 @@ function LoginForm() {
   }, []);
 
   const validateSchema = yup.object().shape({
-    username: yup
-      .string()
-      .typeError('Поле должно быть заполнено')
-      .required('Поле должно быть заполнено'),
-    password: yup
-      .string()
-      .typeError('Поле должно быть заполнено')
-      .required('Поле должно быть заполнено'),
+    username: yup.string().typeError(t('required')).required(t('required')),
+    password: yup.string().typeError(t('required')).required(t('required')),
   });
   return (
     <Formik
@@ -76,7 +72,7 @@ function LoginForm() {
         dirty,
       }) => (
         <Form action="" className="col-12 col-md-6 mt-3 mt-mb-0">
-          <h1 className="text-center mb-4">Войти</h1>
+          <h1 className="text-center mb-4">{t('enter')}</h1>
           <Form.Group className="form-floating mb-3">
             <Form.Control
               type={`text`}
@@ -87,11 +83,11 @@ function LoginForm() {
               onBlur={handleBlur}
               isInvalid={isAuth}
               autoComplete={`username`}
-              placeholder="Ваш ник"
+              placeholder={t('username')}
               id={`username`}
               value={values.username}
             />
-            <Form.Label htmlFor="username">Ваш ник</Form.Label>
+            <Form.Label htmlFor="username">{t('username')}</Form.Label>
           </Form.Group>
           <Form.Group className="form-floating mb-3">
             <Form.Control
@@ -102,18 +98,18 @@ function LoginForm() {
               onBlur={handleBlur}
               isInvalid={isAuth}
               autoComplete={`password`}
-              placeholder="Пароль"
+              placeholder={t('password')}
               id={`password`}
               value={values.password}
             />
-            <Form.Label htmlFor="password">Пароль</Form.Label>
+            <Form.Label htmlFor="password">{t('password')}</Form.Label>
 
             {isAuth ? (
               <Form.Control.Feedback
                 type="invalid"
                 className="invalid-feedback"
               >
-                Неверное имя пользователя или пароль
+                {t('noValidUsername')}
               </Form.Control.Feedback>
             ) : null}
           </Form.Group>
@@ -124,7 +120,7 @@ function LoginForm() {
             disabled={!isValid && !dirty}
             onClick={handleSubmit}
           >
-            Войти
+            {t('enter')}
           </Button>
         </Form>
       )}

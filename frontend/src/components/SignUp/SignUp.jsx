@@ -13,6 +13,7 @@ import {
   Row,
   Button,
 } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import ImageSignUp from './signUpImage.jpg';
 import getRoutes from '../../routes/routes';
@@ -21,6 +22,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [failedRegistration, setFailedRegistration] = useState(false);
+  const { t } = useTranslation();
   const usernameRef = useRef(null);
   const navigate = useNavigate();
   const { logIn } = useAuth();
@@ -30,22 +32,22 @@ const SignUp = () => {
   const registrationValidation = yup.object().shape({
     username: yup
       .string()
-      .min(3, 'минимальная длина имени 3 символа')
-      .max(20, 'максимальная длина имени пользователя не более 20 символов')
+      .min(3, t('signUpPage.minUsernameLenght'))
+      .max(20, t('signUpPage.maxUsernameLenght'))
       .trim()
-      .typeError('Обязательное поле')
-      .required('Обязательное поле'),
+      .typeError(t('required'))
+      .required(t('required')),
     password: yup
       .string()
       .trim()
-      .min(6, 'минимальная длина пародя 6 символов')
-      .typeError('Обязательное поле')
-      .required('Обязательное поле'),
+      .min(6, t('signUpPage.minPasswordLenght'))
+      .typeError(t('required'))
+      .required(t('required')),
     confirmPassword: yup
       .string()
       .test(
         'confirmPassword',
-        'пароли должны совпадать',
+        t('signUpPage.confirmPassword'),
         (password, context) => password === context.parent.password
       ),
   });
@@ -100,7 +102,7 @@ const SignUp = () => {
                     id="username"
                     name="username"
                     ref={usernameRef}
-                    placeholder="Имя пользователя"
+                    placeholder={t('signUpPage.username')}
                     value={formik.values.username}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -109,12 +111,14 @@ const SignUp = () => {
                       failedRegistration
                     }
                   />
-                  <FormLabel htmlFor="username">Имя пользователя</FormLabel>
+                  <FormLabel htmlFor="username">
+                    {t('signUpPage.username')}
+                  </FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
                     className="invalid-feedback"
                   >
-                    Обязательное поле
+                    {t('required')}
                   </Form.Control.Feedback>
                 </FormGroup>
                 <FormGroup className="form-floating mb-3">
@@ -122,7 +126,7 @@ const SignUp = () => {
                     type="password"
                     id="password"
                     name="password"
-                    placeholder="Не менее 6 символов..."
+                    placeholder={t('signUpPage.minPasswordLenght')}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -131,12 +135,12 @@ const SignUp = () => {
                       failedRegistration
                     }
                   />
-                  <FormLabel htmlFor="password">Пароль</FormLabel>
+                  <FormLabel htmlFor="password">{t('password')}</FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
                     className="invalid-feedback"
                   >
-                    Обязательное поле
+                    {t('required')}
                   </Form.Control.Feedback>
                 </FormGroup>
                 <FormGroup className="form-floating mb-3">
@@ -144,7 +148,7 @@ const SignUp = () => {
                     type="confirmPassword"
                     id="confirmPassword"
                     name="confirmPassword"
-                    placeholder="Не менее 6 символов..."
+                    placeholder={t('signUpPage.minPasswordLenght')}
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -154,12 +158,12 @@ const SignUp = () => {
                       failedRegistration
                     }
                   />
-                  <FormLabel>Подтвердите пароль</FormLabel>
+                  <FormLabel>{t('signUpPage.repeatPassword')}</FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
                     className="invalid-feedback"
                   >
-                    Пароли не совпадают
+                    {t('signUpPage.notConfirmPassword')}
                   </Form.Control.Feedback>
                 </FormGroup>
                 <Button
@@ -167,7 +171,7 @@ const SignUp = () => {
                   variant="outline-primary"
                   onClick={formik.handleSubmit}
                 >
-                  Зарегистрироваться
+                  {t('signUpPage.signUp')}
                 </Button>
               </Form>
             </Card.Body>
