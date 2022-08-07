@@ -25,10 +25,10 @@ const Remove = ({ closeHandler, changed }) => {
   return (
     <Modal.Dialog className="modal-dialog-centered">
       <Modal.Header closeButton>
-        <Modal.Title>{t('modal.removeChannel')}</Modal.Title>
+        <Modal.Title>{t('modals.removeChannel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className="lead">{t('modal.questionInModal')}</p>
+        <p className="lead">{t('modals.questionInModal')}</p>
         <form>
           <FormGroup>
             <input

@@ -35,7 +35,7 @@ const Add = ({ closeHandler }) => {
     initialValues: {
       name: '',
     },
-    validationSchema: validationChannelsSchema(channelsName),
+    validationSchema: validationChannelsSchema(channelsName, t),
     onSubmit: (values) => {
       const { name } = values;
       try {
