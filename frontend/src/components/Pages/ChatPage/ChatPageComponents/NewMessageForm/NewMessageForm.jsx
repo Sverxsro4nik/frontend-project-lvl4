@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
 import { useAuth, useSocketApi } from '../../../../../hooks/hooks.js';
 
 const NewMessageForm = ({ activeChannel }) => {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const socketApi = useSocketApi();
   const messageRef = useRef(null);
@@ -46,7 +48,7 @@ const NewMessageForm = ({ activeChannel }) => {
             name="body"
             ref={messageRef}
             aria-label="Новое сообщение"
-            placeholder="Введите сообщение..."
+            placeholder={t('messageFormPlaceholder')}
             className="border-0 p-0 ps-2"
             value={formik.values.body}
             onChange={formik.handleChange}

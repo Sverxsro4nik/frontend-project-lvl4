@@ -16,6 +16,11 @@ const ruLocales = {
     duplicate: 'Канал с таким именем уже существует',
     chatLogo: 'Hexlet Chat',
     exitButton: 'Выйти',
+    channels: 'Каналы',
+    remove: 'Удалить',
+    rename: 'Переименовать',
+    messages: 'сообщений',
+    messageFormPlaceholder: 'Введите сообщение...',
   },
 };
 
