@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -27,8 +28,11 @@ const Add = ({ closeHandler }) => {
   useEffect(() => {
     refContainer.current.focus();
   }, []);
+  const notify = () => toast.success(t('toast.createChannel'));
+
   const close = () => {
     closeHandler();
+    notify();
   };
 
   const formik = useFormik({

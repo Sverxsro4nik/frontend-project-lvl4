@@ -10,6 +10,11 @@ const ruLocales = {
       renameChannel: 'Переименовать канал',
       sendButton: 'Отправить',
     },
+    toast: {
+      createChannel: 'Канал создан',
+      removeChannel: 'Канал удален',
+      renamedChannel: 'Канал переименован',
+    },
     required: 'Обязательное поле',
     min: 'Минимальная длина 3 символа',
     max: 'Максимальная длина 20 символов',

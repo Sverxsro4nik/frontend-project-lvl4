@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug  7 15:51:53 2022
+# Make data base, printed on Sun Aug  7 22:39:35 2022
 
 # Variables
 
@@ -209,11 +209,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/636b7eb7_2eb9_4450_956a_041cd450166f
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/30e31341_a539_4605_9d3b_94e734965d6b
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.82
+GNOME_TERMINAL_SERVICE = :1.849
 # default
 SUFFIXES := 
 # environment
@@ -231,7 +231,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1988
+VSCODE_PID = 17776
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=14/135=10%
 
@@ -270,6 +270,7 @@ start:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 11):
+ 
 	make start-backend & make start-frontend
 
 start-backend:
@@ -320,6 +321,6 @@ install:
 # strcache performance: lookups = 31 / hit rate = 29%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sun Aug  7 15:51:53 2022
+# Finished Make data base on Sun Aug  7 22:39:35 2022
 
  

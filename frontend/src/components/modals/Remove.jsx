@@ -5,10 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { setActualChannel } from '../../slices/channelsSlice.js';
 
 import { useSocketApi } from '../../hooks/hooks';
+import { toast } from 'react-toastify';
 
 // BEGIN (write your solution here)
 const Remove = ({ closeHandler, changed }) => {
   const { t } = useTranslation();
+  const notify = () => toast(t('toast.removeChannel'));
   const currentChannelId = useSelector(
     (state) => state.channelsReducer.currentChannelId
   );
@@ -17,6 +19,7 @@ const Remove = ({ closeHandler, changed }) => {
   const deleteChannel = (e) => {
     e.preventDefault();
     sockedApi.removeChannel(changed);
+    notify();
     if (changed === currentChannelId) {
       dispatch(setActualChannel(1));
     }

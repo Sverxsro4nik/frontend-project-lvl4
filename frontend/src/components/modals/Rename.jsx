@@ -3,10 +3,12 @@ import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
+import { toast } from 'react-toastify';
 
 // BEGIN (write your solution here)
 const Rename = ({ closeHandler, changed }) => {
   const { t } = useTranslation();
+  const notify = () => toast(t('toast.renamedChannel'));
   const refContainer = useRef('');
   const socketApi = useSocketApi();
   const formik = useFormik({
@@ -16,6 +18,7 @@ const Rename = ({ closeHandler, changed }) => {
     onSubmit: (values) => {
       const { body } = values;
       socketApi.renameChannel({ name: body, id: changed });
+      notify();
       closeHandler();
     },
   });

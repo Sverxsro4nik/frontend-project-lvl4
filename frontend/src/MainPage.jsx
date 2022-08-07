@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +8,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify';
 import Nav from './components/Nav/Nav.jsx';
 import LoginPage from './components/Pages/LoginPage/LoginPage.jsx';
 import NotFound from './components/Pages/NotFountPage/NotFound';
@@ -45,6 +47,7 @@ function MainPage() {
             <Route path={getRoutes.signUpPage()} element={<SignUp />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ToastContainer />
         </Router>
       }
     </div>
