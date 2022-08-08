@@ -4,6 +4,7 @@ import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 import { toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 
 // BEGIN (write your solution here)
 const Rename = ({ closeHandler, changed }) => {
@@ -17,7 +18,8 @@ const Rename = ({ closeHandler, changed }) => {
     },
     onSubmit: (values) => {
       const { body } = values;
-      socketApi.renameChannel({ name: body, id: changed });
+      const cleanedName = leoProfanity.check(body);
+      socketApi.renameChannel({ name: cleanedName, id: changed });
       notify();
       closeHandler();
     },

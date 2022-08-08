@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
 import i18next from 'i18next';
+import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
 
 import AuthProvider from './context/AuthProvider.jsx';
@@ -22,6 +23,8 @@ const App = () => {
     debug: false,
     resources,
   });
+  const ruDict = leoProfanity.getDictionary('ru');
+  leoProfanity.add(ruDict);
   const socket = io();
   const dispacth = useDispatch();
 

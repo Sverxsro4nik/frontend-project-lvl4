@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import leoProfanity from 'leo-profanity';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
@@ -22,8 +23,9 @@ const NewMessageForm = ({ activeChannel }) => {
       body: '',
     },
     onSubmit: async (values) => {
+      const cleanedMessage = leoProfanity.clean(values.body);
       const message = {
-        text: values.body,
+        text: cleanedMessage,
         channelId: activeChannel.id,
         username: user.username,
       };

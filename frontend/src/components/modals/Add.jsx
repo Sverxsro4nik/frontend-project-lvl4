@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
+import leoProfanity from 'leo-profanity';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
@@ -42,8 +43,9 @@ const Add = ({ closeHandler }) => {
     validationSchema: validationChannelsSchema(channelsName, t),
     onSubmit: (values) => {
       const { name } = values;
+      const cleanedName = leoProfanity.clean(name);
       try {
-        socketApi.newChannel(name, close);
+        socketApi.newChannel(cleanedName, close);
         values.name = '';
       } catch (e) {
         console.log(e.message);

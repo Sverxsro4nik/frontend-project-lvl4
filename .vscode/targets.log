@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug  7 22:39:35 2022
+# Make data base, printed on Mon Aug  8 20:25:27 2022
 
 # Variables
 
@@ -81,7 +79,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1352,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1352
+SESSION_MANAGER = local/dmitriy-Aspire-E5-571G:@/tmp/.ICE-unix/1335,unix/dmitriy-Aspire-E5-571G:/tmp/.ICE-unix/1335
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +107,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1426
+SSH_AGENT_PID = 1408
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -209,11 +207,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/30e31341_a539_4605_9d3b_94e734965d6b
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/44989c7e_343b_4cca_b1d3_9d9f6d90a5b9
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.849
+GNOME_TERMINAL_SERVICE = :1.94
 # default
 SUFFIXES := 
 # environment
@@ -231,7 +229,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 17776
+VSCODE_PID = 2494
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=14/135=10%
 
@@ -270,7 +268,6 @@ start:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 11):
- 
 	make start-backend & make start-frontend
 
 start-backend:
@@ -292,6 +289,9 @@ start-frontend:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+ 
+make: *** No rule to make target 'all'.  Stop.
 
 deploy:
 #  Implicit rule search has not been done.
@@ -321,6 +321,6 @@ install:
 # strcache performance: lookups = 31 / hit rate = 29%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sun Aug  7 22:39:35 2022
+# Finished Make data base on Mon Aug  8 20:25:27 2022
 
  
