@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import i18next from 'i18next';
 import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
+import { Provider } from '@rollbar/react';
 
 import AuthProvider from './context/AuthProvider.jsx';
 import { socketContext } from './context/contex.js';
@@ -16,6 +17,12 @@ import {
   deleteChannel,
   channelRename,
 } from './slices/channelsSlice.js';
+
+const rollbarrConfig = {
+  accessToken: '5ccf433c20c4472296ee9912c2c9701d',
+  environment: 'production',
+};
+
 const App = () => {
   const defaultlanguage = 'ru';
   i18next.use(initReactI18next).init({
@@ -69,13 +76,15 @@ const App = () => {
     renameChannel: ({ name, id }) => socket.emit('renameChannel', { name, id }),
   };
   return (
-    <AuthProvider>
-      <socketContext.Provider value={socketApi}>
-        <div className="h-100" id="chat">
-          <MainPage />
-        </div>
-      </socketContext.Provider>
-    </AuthProvider>
+    <Provider config={rollbarrConfig}>
+      <AuthProvider>
+        <socketContext.Provider value={socketApi}>
+          <div className="h-100" id="chat">
+            <MainPage />
+          </div>
+        </socketContext.Provider>
+      </AuthProvider>
+    </Provider>
   );
 };
 
