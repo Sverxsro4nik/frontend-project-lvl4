@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import getRoutes from '../../../routes/routes';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '../../../hooks/hooks';
 
 import { setChannels } from '../../../slices/channelsSlice.js';
 import { setMessages } from '../../../slices/messagesSlice.js';
@@ -10,17 +11,9 @@ import { Container } from 'react-bootstrap';
 import ChannelsPanel from './ChatPageComponents/ChannelsPanel/ChannelsPanel';
 import MessagesPanel from './ChatPageComponents/MessagesPanel/MessagesPanel';
 
-const getAuthHeader = () => {
-  const userId = JSON.parse(localStorage.getItem('user'));
-  if (userId && userId.token) {
-    return { Authorization: `Bearer ${userId.token}` };
-  }
-
-  return {};
-};
-
 const ChatPage = () => {
   const dispatch = useDispatch();
+  const { getAuthHeader } = useAuth();
   useEffect(() => {
     const fetchContent = async () => {
       const { data } = await axios.get(getRoutes.dataPath(), {
@@ -31,7 +24,7 @@ const ChatPage = () => {
       dispatch(setMessages(messages));
     };
     fetchContent();
-  }, [dispatch]);
+  }, [dispatch, getAuthHeader]);
 
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
