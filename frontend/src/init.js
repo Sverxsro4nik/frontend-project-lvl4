@@ -1,12 +1,12 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { io } from 'socket.io-client';
 import i18next from 'i18next';
 import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
-import { Provider } from '@rollbar/react';
-import 'dotenv/config';
 
 import AuthProvider from './context/AuthProvider.jsx';
+import { Provider } from '@rollbar/react';
+
 import { socketContext } from './context/contex.js';
 
 import resources from './locales/locales.js';
@@ -24,7 +24,7 @@ const rollbarrConfig = {
   environment: 'production',
 };
 
-const App = () => {
+const App = ({ socket }) => {
   const defaultlanguage = 'ru';
   i18next.use(initReactI18next).init({
     lng: defaultlanguage,
@@ -33,7 +33,6 @@ const App = () => {
   });
   const ruDict = leoProfanity.getDictionary('ru');
   leoProfanity.add(ruDict);
-  const socket = io();
   const dispacth = useDispatch();
 
   socket.on('newMessage', (payload) => {
