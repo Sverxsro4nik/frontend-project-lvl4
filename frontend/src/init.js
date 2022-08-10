@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
 import { Provider } from '@rollbar/react';
+import 'dotenv/config';
 
 import AuthProvider from './context/AuthProvider.jsx';
 import { socketContext } from './context/contex.js';
@@ -19,7 +20,7 @@ import {
 } from './slices/channelsSlice.js';
 
 const rollbarrConfig = {
-  accessToken: '5ccf433c20c4472296ee9912c2c9701d',
+  accessToken: process.env.ROLLBAR_TOKEN,
   environment: 'production',
 };
 
