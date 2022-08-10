@@ -45,7 +45,6 @@ const App = ({ socket }) => {
     dispacth(deleteChannel(payload.id));
   });
   socket.on('renameChannel', (payload) => {
-    console.log('payload in socked', payload);
     dispacth(channelRename(payload));
   });
 

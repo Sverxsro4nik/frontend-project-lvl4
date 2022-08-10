@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../../../../slices/modalSlice';
 
 const MainModal = () => {
-  const isOpened = useSelector((state) => state.modalsReducer.isOpened);
-  const type = useSelector((state) => state.modalsReducer.type);
-  const changed = useSelector((state) => state.modalsReducer.changed);
+  const { isOpened, type, changed } = useSelector(
+    (state) => state.modalsReducer
+  );
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const dispatch = useDispatch();
 
