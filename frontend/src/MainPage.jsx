@@ -18,6 +18,7 @@ import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './hooks/hooks.js';
 import getRoutes from './routes/routes.js';
 import SignUp from './components/SignUp/SignUp.jsx';
+import SocketProvider from './context/SocketProvider.jsx';
 
 const ChatRoute = ({ children }) => {
   const { user } = useAuth('');
@@ -26,7 +27,7 @@ const ChatRoute = ({ children }) => {
   return user ? children : <Navigate to="login" state={{ from: location }} />;
 };
 
-function MainPage() {
+function MainPage({ socket }) {
   return (
     <div className="d-flex flex-column h-100">
       {
@@ -37,9 +38,11 @@ function MainPage() {
               exact
               path="/"
               element={
-                <ChatRoute>
-                  <ChatPage />
-                </ChatRoute>
+                <SocketProvider socket={socket}>
+                  <ChatRoute>
+                    <ChatPage />
+                  </ChatRoute>
+                </SocketProvider>
               }
             />
             <Route path={getRoutes.loginPage()} element={<LoginPage />} />

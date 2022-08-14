@@ -1,26 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { io } from 'socket.io-client';
-import App from './init.js';
+import init from './init.js';
 import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider } from 'react-redux';
-import store from './slices/index.js';
 
-const app = () => {
+const app = async () => {
   const socket = io();
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(
-    <React.StrictMode>
-      {
-        <Provider store={store}>
-          <App socket={socket} />
-        </Provider>
-      }
-    </React.StrictMode>
-  );
+  const initialProject = await init(socket);
+  root.render(<React.StrictMode>{initialProject}</React.StrictMode>);
 };
 
 app();

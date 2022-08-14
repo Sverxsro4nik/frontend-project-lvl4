@@ -22,8 +22,10 @@ const validationChannelsSchema = (channels, text) =>
 
 const Add = ({ closeHandler }) => {
   const { t } = useTranslation();
-  const allChannels = useSelector((state) => state.channelsReducer.channels);
-  const socketApi = useSocketApi();
+  const allChannels = useSelector((state) =>
+    Object.values(state.channelsReducer.entities)
+  );
+  const { newChannel } = useSocketApi();
   const channelsName = allChannels.map((channel) => channel.name);
   const refContainer = useRef('');
   useEffect(() => {
@@ -45,7 +47,7 @@ const Add = ({ closeHandler }) => {
       const { name } = values;
       const cleanedName = leoProfanity.clean(name);
       try {
-        socketApi.newChannel(cleanedName, close);
+        newChannel(cleanedName, close);
         values.name = '';
       } catch (e) {
         console.log(e.message);

@@ -10,7 +10,7 @@ import { useAuth, useSocketApi } from '../../../../../hooks/hooks.js';
 const NewMessageForm = ({ activeChannel }) => {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const socketApi = useSocketApi();
+  const { sendMessage } = useSocketApi();
   const messageRef = useRef(null);
   const validationSchema = yup.object().shape({
     message: yup.string().trim().required('Required'),
@@ -30,7 +30,7 @@ const NewMessageForm = ({ activeChannel }) => {
         username: user.username,
       };
       try {
-        await socketApi.sendMessage(message);
+        await sendMessage(message);
         values.body = '';
       } catch (e) {
         console.log(e.message);

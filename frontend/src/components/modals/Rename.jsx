@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -10,18 +11,24 @@ import leoProfanity from 'leo-profanity';
 const Rename = ({ closeHandler, changed }) => {
   const { t } = useTranslation();
   const notify = () => toast(t('toast.renamedChannel'));
+  const allChannels = useSelector((state) =>
+    Object.values(state.channelsReducer.entities)
+  );
+  const activeChannel = allChannels.find((channel) => channel.id === changed);
+  const allChannelsName = allChannels.map((channel) => channel.name);
   const refContainer = useRef('');
-  const socketApi = useSocketApi();
+  const { renameChannel } = useSocketApi();
   const formik = useFormik({
     initialValues: {
-      body: '',
+      body: activeChannel.name,
     },
     onSubmit: (values) => {
       const { body } = values;
       const cleanedName = leoProfanity.check(body);
-      socketApi.renameChannel({ name: cleanedName, id: changed });
+      renameChannel({ id: changed, name: cleanedName });
       notify();
       closeHandler();
+      return true;
     },
   });
   return (

@@ -5,11 +5,15 @@ import MessagesPanelHeader from '../MessagesPanelHeader/MessagesPanelHeader';
 import NewMessageForm from '../NewMessageForm/NewMessageForm.jsx';
 
 const MessagesPanel = () => {
-  const allMessages = useSelector((state) => state.messagesReducer.messages);
+  const allMessages = useSelector((state) =>
+    Object.values(state.messagesReducer.entities)
+  );
   const currentChannelId = useSelector(
     (state) => state.channelsReducer.currentChannelId
   );
-  const allChannels = useSelector((state) => state.channelsReducer.channels);
+  const allChannels = useSelector((state) =>
+    Object.values(state.channelsReducer.entities)
+  );
   const [activeChannel] = allChannels.filter(
     ({ id }) => id === currentChannelId
   );

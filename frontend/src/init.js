@@ -1,90 +1,40 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
-
-import AuthProvider from './context/AuthProvider.jsx';
+import { Provider as MainProvider } from 'react-redux';
 import { Provider } from '@rollbar/react';
-
-import { socketContext } from './context/contex.js';
+import AuthProvider from './context/AuthProvider.jsx';
 
 import resources from './locales/locales.js';
 import MainPage from './MainPage.jsx';
-import { addMessage, removeMessage } from './slices/messagesSlice.js';
-import {
-  addChannel,
-  setActualChannel,
-  deleteChannel,
-  channelRename,
-} from './slices/channelsSlice.js';
+import store from './slices/index.js';
 
 const rollbarrConfig = {
   accessToken: process.env.ROLLBAR_TOKEN,
   environment: 'production',
 };
 
-const App = ({ socket }) => {
+const init = async (socket) => {
   const defaultlanguage = 'ru';
-  i18next.use(initReactI18next).init({
+  await i18next.use(initReactI18next).init({
     lng: defaultlanguage,
     debug: false,
     resources,
   });
   const ruDict = leoProfanity.getDictionary('ru');
   leoProfanity.add(ruDict);
-  const dispacth = useDispatch();
-
-  socket.on('newMessage', (payload) => {
-    dispacth(addMessage(payload));
-  });
-  socket.on('newChannel', (payload) => {
-    dispacth(addChannel(payload));
-  });
-  socket.on('removeChannel', (payload) => {
-    dispacth(deleteChannel(payload.id));
-  });
-  socket.on('renameChannel', (payload) => {
-    dispacth(channelRename(payload));
-  });
-
-  const socketApi = {
-    sendMessage: (...args) => socket.emit('newMessage', ...args),
-    newChannel: (name, cb) => {
-      socket.emit('newChannel', { name }, (response) => {
-        const {
-          status,
-          data: { id },
-        } = response;
-
-        if (status === 'ok') {
-          dispacth(setActualChannel(id));
-          cb();
-          return response.data;
-        }
-      });
-    },
-    removeChannel: (id) => {
-      socket.emit('removeChannel', { id }, (response) => {
-        const { status } = response;
-        if (status === 'ok') {
-          dispacth(removeMessage(id));
-        }
-      });
-    },
-    renameChannel: ({ name, id }) => socket.emit('renameChannel', { name, id }),
-  };
   return (
     <Provider config={rollbarrConfig}>
-      <AuthProvider>
-        <socketContext.Provider value={socketApi}>
+      <MainProvider store={store}>
+        <AuthProvider>
           <div className="h-100" id="chat">
-            <MainPage />
+            <MainPage socket={socket} />
           </div>
-        </socketContext.Provider>
-      </AuthProvider>
+        </AuthProvider>
+      </MainProvider>
     </Provider>
   );
 };
 
-export default App;
+export default init;

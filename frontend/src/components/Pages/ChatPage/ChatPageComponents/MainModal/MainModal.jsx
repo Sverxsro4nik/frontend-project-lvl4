@@ -8,6 +8,7 @@ const MainModal = () => {
   const { isOpened, type, changed } = useSelector(
     (state) => state.modalsReducer
   );
+  console.log(changed);
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const dispatch = useDispatch();
 

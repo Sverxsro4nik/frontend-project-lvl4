@@ -2,15 +2,16 @@ import React from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
 import { Button, Nav } from 'react-bootstrap';
 import Channel from '../Channel/Channel.jsx';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { openWindow } from '../../../../../slices/modalSlice';
 import MainModal from '../MainModal/MainModal';
 import { useTranslation } from 'react-i18next';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();
-  const allChannels = useSelector((state) => state.channelsReducer.channels);
+  const allChannels = useSelector((state) =>
+    Object.values(state.channelsReducer.entities)
+  );
   const dispatch = useDispatch();
 
   const openAddChannelWindow = () => {

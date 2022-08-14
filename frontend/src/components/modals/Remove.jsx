@@ -11,14 +11,14 @@ import { toast } from 'react-toastify';
 const Remove = ({ closeHandler, changed }) => {
   const { t } = useTranslation();
   const notify = () => toast(t('toast.removeChannel'));
+  const { removeChannel } = useSocketApi();
   const currentChannelId = useSelector(
     (state) => state.channelsReducer.currentChannelId
   );
   const dispatch = useDispatch();
-  const sockedApi = useSocketApi();
   const deleteChannel = (e) => {
     e.preventDefault();
-    sockedApi.removeChannel(changed);
+    removeChannel(changed);
     notify();
     if (changed === currentChannelId) {
       dispatch(setActualChannel(1));

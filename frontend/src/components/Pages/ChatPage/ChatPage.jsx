@@ -20,11 +20,12 @@ const ChatPage = () => {
         headers: getAuthHeader(),
       });
       const { channels, messages } = data;
+      console.log(channels);
       dispatch(setChannels(channels));
       dispatch(setMessages(messages));
     };
     fetchContent();
-  }, [getAuthHeader]);
+  }, [dispatch, getAuthHeader]);
 
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
