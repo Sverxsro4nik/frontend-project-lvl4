@@ -15,6 +15,9 @@ const ruLocales = {
       removeChannel: 'Канал удален',
       renamedChannel: 'Канал переименован',
     },
+    label: {
+      newMessage: 'Новое сообщение',
+    },
     required: 'Обязательное поле',
     min: 'Минимальная длина 3 символа',
     max: 'Максимальная длина 20 символов',

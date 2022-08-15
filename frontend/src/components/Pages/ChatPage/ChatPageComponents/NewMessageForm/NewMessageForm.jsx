@@ -49,7 +49,7 @@ const NewMessageForm = ({ activeChannel }) => {
           <Form.Control
             name="body"
             ref={messageRef}
-            aria-label="Новое сообщение"
+            aria-label={t('label.newMessage')}
             placeholder={t('messageFormPlaceholder')}
             className="border-0 p-0 ps-2"
             value={formik.values.body}
