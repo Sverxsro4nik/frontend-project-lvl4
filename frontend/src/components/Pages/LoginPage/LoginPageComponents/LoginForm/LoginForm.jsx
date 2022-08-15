@@ -71,7 +71,7 @@ function LoginForm() {
         handleSubmit,
         dirty,
       }) => (
-        <Form action="" className="col-12 col-md-6 mt-3 mt-mb-0">
+        <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
           <h1 className="text-center mb-4">{t('enter')}</h1>
           <Form.Group className="form-floating mb-3">
             <Form.Control
@@ -116,9 +116,8 @@ function LoginForm() {
           <Button
             variant="outline-primary"
             className="w-100 mb-3"
-            type={`submit`}
+            type="submit"
             disabled={!isValid && !dirty}
-            onClick={handleSubmit}
           >
             {t('enter')}
           </Button>

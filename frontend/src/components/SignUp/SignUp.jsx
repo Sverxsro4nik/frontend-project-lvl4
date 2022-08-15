@@ -95,7 +95,7 @@ const SignUp = () => {
                   alt="Registratiion Avatar"
                 />
               </div>
-              <Form className="w-50">
+              <Form className="w-50" onSubmit={formik.handleSubmit}>
                 <h1 className="text-center mb-4">Регистрация</h1>
                 <FormGroup className="form-floating mb-3">
                   <FormControl
@@ -167,9 +167,9 @@ const SignUp = () => {
                   </Form.Control.Feedback>
                 </FormGroup>
                 <Button
+                  type="submit"
                   className="w-100"
                   variant="outline-primary"
-                  onClick={formik.handleSubmit}
                 >
                   {t('signUpPage.signUp')}
                 </Button>

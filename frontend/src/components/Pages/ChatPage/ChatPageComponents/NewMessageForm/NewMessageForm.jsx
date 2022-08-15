@@ -57,9 +57,9 @@ const NewMessageForm = ({ activeChannel }) => {
             id="body"
           />
           <Button
+            type="submit"
             variant="group-vertical"
             disabled={formik.isSubmitting}
-            onClick={formik.handleSubmit}
           >
             <ArrowRightSquare size={20} />
           </Button>
