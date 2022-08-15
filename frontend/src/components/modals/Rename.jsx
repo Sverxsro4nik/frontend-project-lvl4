@@ -15,7 +15,7 @@ const Rename = ({ closeHandler, changed }) => {
     Object.values(state.channelsReducer.entities)
   );
   const activeChannel = allChannels.find((channel) => channel.id === changed);
-  const allChannelsName = allChannels.map((channel) => channel.name);
+  // const allChannelsName = allChannels.map((channel) => channel.name);
   const refContainer = useRef('');
   const { renameChannel } = useSocketApi();
   const formik = useFormik({
@@ -24,7 +24,7 @@ const Rename = ({ closeHandler, changed }) => {
     },
     onSubmit: (values) => {
       const { body } = values;
-      const cleanedName = leoProfanity.check(body);
+      const cleanedName = leoProfanity.clean(body);
       renameChannel({ id: changed, name: cleanedName });
       notify();
       closeHandler();
