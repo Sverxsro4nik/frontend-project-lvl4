@@ -41,7 +41,7 @@ const ruLocales = {
       maxUsernameLenght:
         'максимальная длина имени пользователя не более 20 символов',
       minPasswordLenght: 'минимальная длина пароля 6 символов',
-      confirmPassword: 'пароли должны совпадать',
+      confirmPassword: 'Пароли должны совпадать',
       username: 'Имя пользователя',
       repeatPassword: 'Подтвердите пароль',
       notConfirmPassword: 'Пароли не совпадают',

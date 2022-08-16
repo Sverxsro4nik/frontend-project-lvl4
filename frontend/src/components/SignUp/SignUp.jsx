@@ -116,7 +116,7 @@ const SignUp = () => {
                   </FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
-                    className="invalid-feedback"
+                    className="invalid-tooltip"
                   >
                     {t('required')}
                   </Form.Control.Feedback>
@@ -138,7 +138,7 @@ const SignUp = () => {
                   <FormLabel htmlFor="password">{t('password')}</FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
-                    className="invalid-feedback"
+                    className="invalid-tooltip"
                   >
                     {t('required')}
                   </Form.Control.Feedback>
@@ -161,9 +161,9 @@ const SignUp = () => {
                   <FormLabel>{t('signUpPage.repeatPassword')}</FormLabel>
                   <Form.Control.Feedback
                     type="invalid"
-                    className="invalid-feedback"
+                    className="invalid-tooltip"
                   >
-                    {t('signUpPage.notConfirmPassword')}
+                    {t('signUpPage.confirmPassword')}
                   </Form.Control.Feedback>
                 </FormGroup>
                 <Button
