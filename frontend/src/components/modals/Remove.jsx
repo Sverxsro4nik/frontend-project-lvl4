@@ -8,7 +8,7 @@ import { useSocketApi } from '../../hooks/hooks';
 import { toast } from 'react-toastify';
 
 // BEGIN (write your solution here)
-const Remove = ({ closeHandler, changed }) => {
+const Remove = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast(t('toast.removeChannel'));
   const { removeChannel } = useSocketApi();
@@ -26,7 +26,7 @@ const Remove = ({ closeHandler, changed }) => {
     closeHandler();
   };
   return (
-    <Modal.Dialog className="modal-dialog-centered">
+    <Modal show={isOpened} onHide={closeHandler} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('modals.removeChannel')}</Modal.Title>
       </Modal.Header>
@@ -49,7 +49,7 @@ const Remove = ({ closeHandler, changed }) => {
           </FormGroup>
         </form>
       </Modal.Body>
-    </Modal.Dialog>
+    </Modal>
   );
 };
 

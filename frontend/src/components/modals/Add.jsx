@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import leoProfanity from 'leo-profanity';
-import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { Form, Modal, FormLabel, FormControl } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +20,7 @@ const validationChannelsSchema = (channels, text) =>
       .notOneOf(channels, text('duplicate')),
   });
 
-const Add = ({ closeHandler }) => {
+const Add = ({ closeHandler, isOpened }) => {
   const { t } = useTranslation();
   const allChannels = useSelector((state) =>
     Object.values(state.channelsReducer.entities)
@@ -56,39 +56,46 @@ const Add = ({ closeHandler }) => {
   });
   return (
     <>
-      <Modal.Dialog>
+      <Modal show={isOpened} onHide={closeHandler} centered>
         <Modal.Header closeButton={closeHandler}>
-          <Modal.Title>{t('modals.addChannel')}</Modal.Title>
+          <Modal.Title> {t('modals.addChannel')} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
-            <FormGroup>
+          <Form onSubmit={formik.handleSubmit}>
+            <FormControl
+              className="mb-2"
+              type="text"
+              data-testid="input-body"
+              ref={refContainer}
+              name="name"
+              id="name"
+              required=""
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              isInvalid={formik.touched && formik.errors.name}
+            />
+            <FormLabel className="visually-hidden" htmlFor="name">
+              {t('channel.name')}
+            </FormLabel>
+            <FormControl.Feedback type="invalid">
+              {formik.errors.name}
+            </FormControl.Feedback>
+            <div className='d-flex justify-content-end"'>
               <FormControl
-                data-testid="input-body"
-                ref={refContainer}
-                name="name"
-                required=""
-                onChange={formik.handleChange}
-                value={formik.values.name}
+                className="me-2 btn btn-secondary"
+                type="button"
+                value={t('modals.cancelButton')}
+                onClick={closeHandler}
               />
-            </FormGroup>
-          </form>
+              <FormControl
+                className="btn btn-primary"
+                type="submit"
+                value={t('modals.addButton')}
+              />
+            </div>
+          </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <FormControl
-            className="me-2 btn btn-secondary"
-            type="button"
-            value={t('modals.cancelButton')}
-            onClick={closeHandler}
-          />
-          <FormControl
-            className="btn btn-primary"
-            type="submit"
-            value={t('modals.addButton')}
-            onClick={formik.handleSubmit}
-          />
-        </Modal.Footer>
-      </Modal.Dialog>
+      </Modal>
     </>
   );
 };

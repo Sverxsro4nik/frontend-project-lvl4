@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import leoProfanity from 'leo-profanity';
 
 // BEGIN (write your solution here)
-const Rename = ({ closeHandler, changed }) => {
+const Rename = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast(t('toast.renamedChannel'));
   const allChannels = useSelector((state) =>
@@ -32,7 +32,7 @@ const Rename = ({ closeHandler, changed }) => {
     },
   });
   return (
-    <Modal.Dialog>
+    <Modal show={isOpened} onHide={closeHandler} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('modals.renameChannel')}</Modal.Title>
       </Modal.Header>
@@ -64,7 +64,7 @@ const Rename = ({ closeHandler, changed }) => {
           onClick={formik.handleSubmit}
         />
       </Modal.Footer>
-    </Modal.Dialog>
+    </Modal>
   );
 };
 

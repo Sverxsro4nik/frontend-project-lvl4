@@ -19,15 +19,14 @@ const MainModal = () => {
   const ActyalModal = modalsWindow(type);
   return (
     <>
-      <Modal show={isOpened} onHide={closeHandler} centered>
-        {ActyalModal && (
-          <ActyalModal
-            closeHandler={closeHandler}
-            changed={changed}
-            allChannels={allChannels}
-          />
-        )}
-      </Modal>
+      {ActyalModal && (
+        <ActyalModal
+          closeHandler={closeHandler}
+          changed={changed}
+          allChannels={allChannels}
+          isOpened={isOpened}
+        />
+      )}
     </>
   );
 };
