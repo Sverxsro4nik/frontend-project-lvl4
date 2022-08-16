@@ -32,8 +32,8 @@ const SignUp = () => {
   const registrationValidation = yup.object().shape({
     username: yup
       .string()
-      .min(3, t('signUpPage.minUsernameLenght'))
-      .max(20, t('signUpPage.maxUsernameLenght'))
+      .min(3, t('signUpPage.usernameLenght'))
+      .max(20, t('signUpPage.usernameLenght'))
       .trim()
       .typeError(t('required'))
       .required(t('required')),
@@ -114,12 +114,21 @@ const SignUp = () => {
                   <FormLabel htmlFor="username">
                     {t('signUpPage.username')}
                   </FormLabel>
-                  <Form.Control.Feedback
-                    type="invalid"
-                    className="invalid-tooltip"
-                  >
-                    {t('required')}
-                  </Form.Control.Feedback>
+                  {formik.errors.username ? (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {formik.errors.username}
+                    </Form.Control.Feedback>
+                  ) : (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {t('required')}
+                    </Form.Control.Feedback>
+                  )}
                 </FormGroup>
                 <FormGroup className="form-floating mb-3">
                   <FormControl
@@ -136,12 +145,21 @@ const SignUp = () => {
                     }
                   />
                   <FormLabel htmlFor="password">{t('password')}</FormLabel>
-                  <Form.Control.Feedback
-                    type="invalid"
-                    className="invalid-tooltip"
-                  >
-                    {t('required')}
-                  </Form.Control.Feedback>
+                  {formik.errors.password ? (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {formik.errors.password}
+                    </Form.Control.Feedback>
+                  ) : (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {t('required')}
+                    </Form.Control.Feedback>
+                  )}
                 </FormGroup>
                 <FormGroup className="form-floating mb-3">
                   <FormControl
@@ -159,12 +177,21 @@ const SignUp = () => {
                     }
                   />
                   <FormLabel>{t('signUpPage.repeatPassword')}</FormLabel>
-                  <Form.Control.Feedback
-                    type="invalid"
-                    className="invalid-tooltip"
-                  >
-                    {t('signUpPage.confirmPassword')}
-                  </Form.Control.Feedback>
+                  {formik.errors.confirmPassword ? (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {formik.errors.confirmPassword}
+                    </Form.Control.Feedback>
+                  ) : (
+                    <Form.Control.Feedback
+                      type="invalid"
+                      className="invalid-tooltip"
+                    >
+                      {t('required')}
+                    </Form.Control.Feedback>
+                  )}
                 </FormGroup>
                 <Button
                   type="submit"

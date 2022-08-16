@@ -37,14 +37,11 @@ const ruLocales = {
     noValidUsername: 'Неверное имя пользователя или пароль',
     notFound: 'Not Found Page',
     signUpPage: {
-      minUsernameLenght: 'минимальная длина имени 3 символа',
-      maxUsernameLenght:
-        'максимальная длина имени пользователя не более 20 символов',
-      minPasswordLenght: 'минимальная длина пароля 6 символов',
+      usernameLenght: 'От 3 до 20 символов',
+      minPasswordLenght: 'Не менее 6 символов',
       confirmPassword: 'Пароли должны совпадать',
       username: 'Имя пользователя',
       repeatPassword: 'Подтвердите пароль',
-      notConfirmPassword: 'Пароли не совпадают',
       signUp: 'Зарегистрироваться',
     },
   },
