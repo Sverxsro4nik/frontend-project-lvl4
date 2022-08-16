@@ -28,7 +28,9 @@ const DropDownChannel = ({ name, id, handleClick, currentChannelId }) => {
         <span className="me-1">#</span>
         {name}
       </Button>
-      <Dropdown.Toggle variant={variant} />
+      <Dropdown.Toggle variant={variant}>
+        <span className="visually-hidden">{t('channelManagement')}</span>
+      </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={(id) => openRemoveChannelWindow(id)}>
