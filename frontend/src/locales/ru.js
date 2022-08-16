@@ -21,7 +21,6 @@ const ruLocales = {
     },
     required: 'Обязательное поле',
     channelNameLenght: 'От 3 до 20 символов',
-    max: 'Максимальная длина 20 символов',
     duplicate: 'Должно быть уникальным',
     chatLogo: 'Hexlet Chat',
     exitButton: 'Выйти',

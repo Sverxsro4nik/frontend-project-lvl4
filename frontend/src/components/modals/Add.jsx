@@ -15,8 +15,8 @@ const validationChannelsSchema = (channels, text) =>
       .string()
       .trim()
       .required(text('required'))
-      .min(3, text('min'))
-      .max(20, text('max'))
+      .min(3, text('channelNameLenght'))
+      .max(20, text('channelNameLenght'))
       .notOneOf(channels, text('duplicate')),
   });
 
