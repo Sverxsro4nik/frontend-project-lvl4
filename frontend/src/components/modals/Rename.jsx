@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { Modal, FormGroup, FormControl, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 import { toast } from 'react-toastify';
@@ -37,7 +37,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
         <Modal.Title>{t('modals.renameChannel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form>
+        <Form onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormControl
               data-testid="input-body"
@@ -61,7 +61,6 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
           className="btn btn-primary"
           type="submit"
           value={t('modals.sendButton')}
-          onClick={formik.handleSubmit}
         />
       </Modal.Footer>
     </Modal>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, FormGroup } from 'react-bootstrap';
+import { Modal, FormGroup, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { setActualChannel } from '../../slices/channelsSlice.js';
@@ -32,7 +32,7 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
       </Modal.Header>
       <Modal.Body>
         <p className="lead">{t('modals.questionInModal')}</p>
-        <form>
+        <Form onSubmit={deleteChannel}>
           <FormGroup>
             <input
               type="button"
@@ -44,10 +44,9 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
               type="button"
               className="btn btn-danger"
               value={t('modals.removeButton')}
-              onClick={deleteChannel}
             />
           </FormGroup>
-        </form>
+        </Form>
       </Modal.Body>
     </Modal>
   );
