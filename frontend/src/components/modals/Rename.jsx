@@ -1,7 +1,13 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { Modal, FormGroup, FormControl, Form } from 'react-bootstrap';
+import {
+  Modal,
+  FormGroup,
+  FormControl,
+  Form,
+  FormLabel,
+} from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 import { toast } from 'react-toastify';
@@ -15,7 +21,6 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
     Object.values(state.channelsReducer.entities)
   );
   const activeChannel = allChannels.find((channel) => channel.id === changed);
-  // const allChannelsName = allChannels.map((channel) => channel.name);
   const refContainer = useRef('');
   const { renameChannel } = useSocketApi();
   const formik = useFormik({
@@ -46,7 +51,14 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
               required=""
               onChange={formik.handleChange}
               value={formik.values.body}
+              isInvalid={formik.touched && formik.errors.body}
             />
+            <FormLabel className="visually-hidden" htmlFor="name">
+              {t('modals.name')}
+            </FormLabel>
+            <FormControl.Feedback type="invalid">
+              {formik.errors.body}
+            </FormControl.Feedback>
           </FormGroup>
         </Form>
       </Modal.Body>
