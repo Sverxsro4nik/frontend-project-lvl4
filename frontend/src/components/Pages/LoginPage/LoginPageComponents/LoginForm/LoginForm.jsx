@@ -105,10 +105,7 @@ function LoginForm() {
             <Form.Label htmlFor="password">{t('password')}</Form.Label>
 
             {isAuth ? (
-              <Form.Control.Feedback
-                type="invalid"
-                className="invalid-feedback"
-              >
+              <Form.Control.Feedback type="invalid" className="invalid-tooltip">
                 {t('noValidUsername')}
               </Form.Control.Feedback>
             ) : null}
