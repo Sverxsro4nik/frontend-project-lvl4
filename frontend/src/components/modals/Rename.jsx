@@ -48,7 +48,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
               value={formik.values.body}
             />
           </FormGroup>
-        </form>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
         <FormControl
