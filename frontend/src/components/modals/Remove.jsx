@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 // BEGIN (write your solution here)
 const Remove = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
-  const notify = () => toast(t('toast.removeChannel'));
+  const notify = () => toast.success(t('toast.removeChannel'));
   const { removeChannel } = useSocketApi();
   const currentChannelId = useSelector(
     (state) => state.channelsReducer.currentChannelId
@@ -32,21 +32,22 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
       </Modal.Header>
       <Modal.Body>
         <p className="lead">{t('modals.questionInModal')}</p>
-        <Form onSubmit={deleteChannel}>
-          <FormGroup>
-            <input
-              type="button"
-              className="btn btn-secondary"
-              value={t('modals.cancelButton')}
-              onClick={closeHandler}
-            />
-            <input
-              type="button"
-              className="btn btn-danger"
-              value={t('modals.removeButton')}
-            />
-          </FormGroup>
-        </Form>
+        <div className="d-flex justify-content-end">
+          <button
+            type="button"
+            onClick={closeHandler}
+            className="btn btn-secondary"
+          >
+            {t('modals.cancelButton')}
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={deleteChannel}
+          >
+            {t('modals.removeButton')}
+          </button>
+        </div>
       </Modal.Body>
     </Modal>
   );
