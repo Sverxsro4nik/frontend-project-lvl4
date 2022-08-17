@@ -80,7 +80,7 @@ const Add = ({ closeHandler, isOpened }) => {
             <FormControl.Feedback type="invalid">
               {formik.errors.name}
             </FormControl.Feedback>
-            <div className='d-flex justify-content-end"'>
+            <div className="d-flex justify-content-end">
               <FormControl
                 className="me-2 btn btn-secondary"
                 type="button"

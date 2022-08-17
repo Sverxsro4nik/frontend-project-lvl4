@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import {
@@ -12,28 +12,42 @@ import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 import { toast } from 'react-toastify';
 import leoProfanity from 'leo-profanity';
+import * as yup from 'yup';
 
-// BEGIN (write your solution here)
+const validationChannelsSchema = (channels, text) =>
+  yup.object().shape({
+    body: yup
+      .string()
+      .trim()
+      .required(text('required'))
+      .min(3, text('channelNameLenght'))
+      .max(20, text('channelNameLenght'))
+      .notOneOf(channels, text('duplicate')),
+  });
+
 const Rename = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast(t('toast.renamedChannel'));
   const allChannels = useSelector((state) =>
     Object.values(state.channelsReducer.entities)
   );
-  const activeChannel = allChannels.find((channel) => channel.id === changed);
   const refContainer = useRef('');
+  useEffect(() => {
+    refContainer.current.focus();
+  }, []);
+  const activeChannel = allChannels.find((channel) => channel.id === changed);
+  const channelsName = allChannels.map((channel) => channel.name);
   const { renameChannel } = useSocketApi();
   const formik = useFormik({
     initialValues: {
       body: activeChannel.name,
     },
-    onSubmit: (values) => {
-      const { body } = values;
+    validationSchema: validationChannelsSchema(channelsName, t),
+    onSubmit: ({ body }) => {
       const cleanedName = leoProfanity.clean(body);
       renameChannel({ id: changed, name: cleanedName });
       notify();
       closeHandler();
-      return true;
     },
   });
   return (
@@ -48,33 +62,35 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
               data-testid="input-body"
               ref={refContainer}
               name="body"
+              id="body"
               required=""
               onChange={formik.handleChange}
               value={formik.values.body}
-              isInvalid={formik.touched && formik.errors.body}
+              isInvalid={formik.errors.body && formik.touched}
             />
-            <FormLabel className="visually-hidden" htmlFor="name">
+            <FormLabel className="visually-hidden" htmlFor="body">
               {t('modals.name')}
             </FormLabel>
-            <FormControl.Feedback type="invalid">
-              {formik.errors.body}
-            </FormControl.Feedback>
           </FormGroup>
+          <FormControl.Feedback type="invalid" className="d-block">
+            {formik.errors.body}
+          </FormControl.Feedback>
+          <br />
+          <div className="d-flex justify-content-end">
+            <FormControl
+              className="btn btn-primary"
+              type="button"
+              value={t('modals.cancelButton')}
+              onClick={closeHandler}
+            />
+            <FormControl
+              className="btn btn-primary"
+              type="submit"
+              value={t('modals.sendButton')}
+            />
+          </div>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <FormControl
-          className="btn btn-primary"
-          type="submit"
-          value={t('modals.cancelButton')}
-          onClick={closeHandler}
-        />
-        <FormControl
-          className="btn btn-primary"
-          type="submit"
-          value={t('modals.sendButton')}
-        />
-      </Modal.Footer>
     </Modal>
   );
 };
