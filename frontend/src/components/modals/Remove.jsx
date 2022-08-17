@@ -19,11 +19,11 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
   const deleteChannel = (e) => {
     e.preventDefault();
     removeChannel(changed);
+    closeHandler();
     notify();
     if (changed === currentChannelId) {
       dispatch(setActualChannel(1));
     }
-    closeHandler();
   };
   return (
     <Modal show={isOpened} onHide={closeHandler} centered>

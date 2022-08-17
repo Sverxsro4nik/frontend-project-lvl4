@@ -13,7 +13,7 @@ const ruLocales = {
     },
     toast: {
       createChannel: 'Канал создан',
-      removeChannel: 'Канал удален',
+      removeChannel: 'Канал удалён',
       renamedChannel: 'Канал переименован',
     },
     label: {
