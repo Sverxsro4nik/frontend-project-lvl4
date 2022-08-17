@@ -50,7 +50,7 @@ function MainPage({ socket }) {
             <Route path={getRoutes.signUpPage()} element={<SignUp />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <ToastContainer />
+          <ToastContainer autoClose={5000} />
         </Router>
       }
     </div>
