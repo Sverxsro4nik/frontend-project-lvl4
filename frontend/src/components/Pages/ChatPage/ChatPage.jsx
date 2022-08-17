@@ -7,8 +7,8 @@ import { useAuth } from '../../../hooks/hooks';
 
 import { setChannels } from '../../../slices/channelsSlice.js';
 import { setMessages } from '../../../slices/messagesSlice.js';
-import ChannelsPanel from './ChatPageComponents/ChannelsPanel/ChannelsPanel';
-import MessagesPanel from './ChatPageComponents/MessagesPanel/MessagesPanel';
+import ChannelsPanel from './ChatPageComponents/ChannelsPanel/ChannelsPanel.jsx';
+import MessagesPanel from './ChatPageComponents/MessagesPanel/MessagesPanel.jsx';
 
 const ChatPage = () => {
   const dispatch = useDispatch();

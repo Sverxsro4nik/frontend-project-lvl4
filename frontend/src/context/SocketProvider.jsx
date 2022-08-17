@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { socketContext } from './contex.js';
 
@@ -23,7 +25,7 @@ const SocketProvider = ({ socket, children }) => {
       store.dispatch(deleteChannel(payload.id));
     });
     socket.on('renameChannel', ({ id, name }) => {
-      store.dispatch(channelRename({ id, changes: { name: name } }));
+      store.dispatch(channelRename({ id, changes: { name } }));
     });
   }, [socket]);
 
@@ -46,12 +48,11 @@ const SocketProvider = ({ socket, children }) => {
     removeChannel: (id) => {
       socket.emit('removeChannel', { id });
     },
-    renameChannel: ({ name, id }, cb) =>
-      socket.emit('renameChannel', { name, id }, (response) => {
-        if (response.status === 'ok') {
-          cb();
-        }
-      }),
+    renameChannel: ({ name, id }, cb) => socket.emit('renameChannel', { name, id }, (response) => {
+      if (response.status === 'ok') {
+        cb();
+      }
+    }),
   };
   return (
     <socketContext.Provider value={socketApi}>

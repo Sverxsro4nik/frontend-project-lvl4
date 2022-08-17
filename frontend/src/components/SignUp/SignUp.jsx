@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
 import {
@@ -18,7 +19,6 @@ import { useTranslation } from 'react-i18next';
 import ImageSignUp from './signUpImage.jpg';
 import getRoutes from '../../routes/routes';
 import { useAuth } from '../../hooks/hooks';
-import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [failedRegistration, setFailedRegistration] = useState(false);
@@ -48,7 +48,7 @@ const SignUp = () => {
       .test(
         'confirmPassword',
         t('signUpPage.confirmPassword'),
-        (password, context) => password === context.parent.password
+        (password, context) => password === context.parent.password,
       ),
   });
 
@@ -107,8 +107,8 @@ const SignUp = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     isInvalid={
-                      (formik.errors.username && formik.touched.username) ||
-                      failedRegistration
+                      (formik.errors.username && formik.touched.username)
+                      || failedRegistration
                     }
                   />
                   <FormLabel htmlFor="username">
@@ -140,8 +140,8 @@ const SignUp = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     isInvalid={
-                      (formik.errors.password && formik.touched.password) ||
-                      failedRegistration
+                      (formik.errors.password && formik.touched.password)
+                      || failedRegistration
                     }
                   />
                   <FormLabel htmlFor="password">{t('password')}</FormLabel>
@@ -171,9 +171,9 @@ const SignUp = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     isInvalid={
-                      (formik.errors.confirmPassword &&
-                        formik.touched.confirmPassword) ||
-                      failedRegistration
+                      (formik.errors.confirmPassword
+                        && formik.touched.confirmPassword)
+                        || failedRegistration
                     }
                   />
                   <FormLabel>{t('signUpPage.repeatPassword')}</FormLabel>

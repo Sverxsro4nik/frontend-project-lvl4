@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useCallback, useMemo } from 'react';
 import { AuthContext } from './contex.js';
 
@@ -13,7 +14,7 @@ function AuthProvider({ children }) {
 
   const savedUserData = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(
-    savedUserData ? { username: savedUserData.username } : null
+    savedUserData ? { username: savedUserData.username } : null,
   );
   const logIn = useCallback((userData) => {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -32,7 +33,7 @@ function AuthProvider({ children }) {
       user,
       getAuthHeader,
     }),
-    [logIn, logOut, user]
+    [logIn, logOut, user],
   );
 
   return (

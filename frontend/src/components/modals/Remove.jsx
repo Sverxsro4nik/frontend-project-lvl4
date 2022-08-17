@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Modal, FormGroup, Form } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { setActualChannel } from '../../slices/channelsSlice.js';
 
 import { useSocketApi } from '../../hooks/hooks';
-import { toast } from 'react-toastify';
 
 // BEGIN (write your solution here)
 const Remove = ({ closeHandler, changed, isOpened }) => {
@@ -13,7 +14,7 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
   const notify = () => toast.success(t('toast.removeChannel'));
   const { removeChannel } = useSocketApi();
   const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId
+    (state) => state.channelsReducer.currentChannelId,
   );
   const dispatch = useDispatch();
   const deleteChannel = (e) => {

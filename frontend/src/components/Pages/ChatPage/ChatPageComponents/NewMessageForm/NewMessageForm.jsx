@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useRef, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
@@ -31,6 +32,7 @@ const NewMessageForm = ({ activeChannel }) => {
       };
       try {
         await sendMessage(message);
+        // eslint-disable-next-line no-param-reassign
         values.body = '';
       } catch (e) {
         console.log(e.message);

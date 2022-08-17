@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setActualChannel } from '../../../../../slices/channelsSlice';
-import DropDownChannel from '../DropDownChannel/DropDownChannel';
+import DropDownChannel from '../DropDownChannel/DropDownChannel.jsx';
 
 const Channel = ({ channel }) => {
   const { id, name, removable } = channel;

@@ -1,4 +1,7 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import React from 'react';
+import {
+  Card, Col, Container, Row,
+} from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import getRoutes from '../../../routes/routes';
 import imagePath from './loginPage.jpeg';

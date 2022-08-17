@@ -1,30 +1,30 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { Modal, FormControl, Form, FormLabel } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
-import { useSocketApi } from '../../hooks/hooks.js';
+import {
+  Modal, FormControl, Form, FormLabel,
+} from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import leoProfanity from 'leo-profanity';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
+import leoProfanity from 'leo-profanity';
+import { useSocketApi } from '../../hooks/hooks.js';
 
-const validationChannelsSchema = (channels, text) =>
-  yup.object().shape({
-    rename: yup
-      .string()
-      .trim()
-      .required(text('required'))
-      .min(3, text('channelNameLenght'))
-      .max(20, text('channelNameLenght'))
-      .notOneOf(channels, text('duplicate')),
-  });
+const validationChannelsSchema = (channels, text) => yup.object().shape({
+  rename: yup
+    .string()
+    .trim()
+    .required(text('required'))
+    .min(3, text('channelNameLenght'))
+    .max(20, text('channelNameLenght'))
+    .notOneOf(channels, text('duplicate')),
+});
 
 const Rename = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast.success(t('toast.renamedChannel'));
-  const allChannels = useSelector((state) =>
-    Object.values(state.channelsReducer.entities)
-  );
+  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
   const refContainer = useRef('');
   useEffect(() => {
     refContainer.current.focus();
@@ -64,7 +64,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
             value={formik.values.rename}
             isInvalid={formik.errors.body && formik.touched}
           />
-          <FormLabel htmlFor="rename">Имя канала</FormLabel>
+          <FormLabel htmlFor="rename" className='visually-hidden'>Имя канала</FormLabel>
           <FormControl.Feedback type="invalid" className="d-block">
             {formik.errors.rename}
           </FormControl.Feedback>

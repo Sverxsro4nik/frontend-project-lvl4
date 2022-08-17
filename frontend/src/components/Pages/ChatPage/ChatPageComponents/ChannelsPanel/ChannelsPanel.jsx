@@ -5,7 +5,7 @@ import { Button, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Channel from '../Channel/Channel.jsx';
 import { openWindow } from '../../../../../slices/modalSlice';
-import MainModal from '../MainModal/MainModal';
+import MainModal from '../MainModal/MainModal.jsx';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();
