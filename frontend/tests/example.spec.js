@@ -18,7 +18,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('registration', () => {
   test('handle new user creation', async ({ page }) => {
     await page.click('text=Регистрация');
-    await page.waitForURL(`**/signup`);
+    await page.waitForURL('**/signup');
     await page.locator('text=Имя пользователя').type(user.login);
     await page.locator('text=/^Пароль$/').type(user.password);
     await page.locator('text=Подтвердите пароль').type(user.password);
@@ -28,7 +28,7 @@ test.describe('registration', () => {
 
   test('handle validation', async ({ page }) => {
     await page.click('text=Регистрация');
-    await page.waitForURL(`**/signup`);
+    await page.waitForURL('**/signup');
 
     await page.locator('text=Имя пользователя').type('u');
     await page.locator('text=/^Пароль$/').type('pass');
@@ -52,7 +52,7 @@ test.describe('auth', () => {
     await page.locator('button[type="submit"]').click();
 
     expect(
-      await page.$('text=Неверные имя пользователя или пароль')
+      await page.$('text=Неверные имя пользователя или пароль'),
     ).toBeNull();
   });
 
@@ -62,7 +62,7 @@ test.describe('auth', () => {
     await page.locator('button[type="submit"]').click();
 
     expect(
-      await page.$('text=Неверные имя пользователя или пароль')
+      await page.$('text=Неверные имя пользователя или пароль'),
     ).not.toBeNull();
   });
 });
@@ -86,10 +86,10 @@ test.describe('chat', () => {
     await page.locator('[aria-label="Новое сообщение"]').type(profanityText);
     await page.keyboard.press('Enter');
     expect(
-      await page.locator(`text=${profanityText}`, { timeout: 0 })
+      await page.locator(`text=${profanityText}`, { timeout: 0 }),
     ).not.toBe();
     expect(
-      await page.locator('text="you have nice *****"', { timeout: 30000 })
+      await page.locator('text="you have nice *****"', { timeout: 30000 }),
     ).not.toBeNull();
   });
 

@@ -1,24 +1,20 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux';
-import Message from '../Message/Message';
-import MessagesPanelHeader from '../MessagesPanelHeader/MessagesPanelHeader';
+import Message from '../Message/Message.jsx';
+import MessagesPanelHeader from '../MessagesPanelHeader/MessagesPanelHeader.jsx';
 import NewMessageForm from '../NewMessageForm/NewMessageForm.jsx';
 
 const MessagesPanel = () => {
-  const allMessages = useSelector((state) =>
-    Object.values(state.messagesReducer.entities)
-  );
+  const allMessages = useSelector((state) => Object.values(state.messagesReducer.entities));
   const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId
+    (state) => state.channelsReducer.currentChannelId,
   );
-  const allChannels = useSelector((state) =>
-    Object.values(state.channelsReducer.entities)
-  );
+  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
   const [activeChannel] = allChannels.filter(
-    ({ id }) => id === currentChannelId
+    ({ id }) => id === currentChannelId,
   );
   const activeChannelMessages = allMessages.filter(
-    (message) => message.channelId === currentChannelId
+    (message) => message.channelId === currentChannelId,
   );
   return (
     <div className="col p-0 h-100">

@@ -1,10 +1,12 @@
-import React from 'react';
-import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
+/* eslint-disable no-shadow */
+import { ButtonGroup } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { openWindow } from '../../../../../slices/modalSlice';
 
-const DropDownChannel = ({ name, id, handleClick, currentChannelId }) => {
+const DropDownChannel = ({
+  name, id, handleClick, currentChannelId,
+}) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

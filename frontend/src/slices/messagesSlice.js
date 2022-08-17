@@ -24,7 +24,7 @@ const messagesSlice = createSlice({
 });
 
 export const selectors = messagesAdapter.getSelectors(
-  (state) => state.messages
+  (state) => state.messages,
 );
 
 export const { setMessages, addMessage, removeMessage } = messagesSlice.actions;
