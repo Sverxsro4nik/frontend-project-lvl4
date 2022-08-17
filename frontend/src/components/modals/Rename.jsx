@@ -38,6 +38,10 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
   const activeChannel = allChannels.find((channel) => channel.id === changed);
   const channelsName = allChannels.map((channel) => channel.name);
   const { renameChannel } = useSocketApi();
+  const closeModal = () => {
+    closeHandler();
+    notify();
+  };
   const formik = useFormik({
     initialValues: {
       body: activeChannel.name,
@@ -46,8 +50,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
     onSubmit: ({ body }) => {
       const cleanedName = leoProfanity.clean(body);
       renameChannel({ id: changed, name: cleanedName });
-      notify();
-      closeHandler();
+      closeModal();
     },
   });
   return (
