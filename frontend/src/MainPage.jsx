@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,7 +14,6 @@ import Nav from './components/Nav/Nav.jsx';
 import LoginPage from './components/Pages/LoginPage/LoginPage.jsx';
 import NotFound from './components/Pages/NotFountPage/NotFound';
 
-import React from 'react';
 import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './hooks/hooks.js';
 import getRoutes from './routes/routes.js';

@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-
-import getRoutes from '../../../routes/routes';
 import { useDispatch } from 'react-redux';
+import { Container } from 'react-bootstrap';
+import getRoutes from '../../../routes/routes';
 import { useAuth } from '../../../hooks/hooks';
 
 import { setChannels } from '../../../slices/channelsSlice.js';
 import { setMessages } from '../../../slices/messagesSlice.js';
-import { Container } from 'react-bootstrap';
 import ChannelsPanel from './ChatPageComponents/ChannelsPanel/ChannelsPanel';
 import MessagesPanel from './ChatPageComponents/MessagesPanel/MessagesPanel';
 
@@ -20,7 +19,6 @@ const ChatPage = () => {
         headers: getAuthHeader(),
       });
       const { channels, messages } = data;
-      console.log(channels);
       dispatch(setChannels(channels));
       dispatch(setMessages(messages));
     };

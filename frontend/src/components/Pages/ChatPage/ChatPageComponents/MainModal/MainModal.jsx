@@ -1,13 +1,10 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
-import modalsWindow from '../../../../modals';
 import { useDispatch, useSelector } from 'react-redux';
+import modalsWindow from '../../../../modals';
 import { closeModal } from '../../../../../slices/modalSlice';
 
 const MainModal = () => {
-  const { isOpened, type, changed } = useSelector(
-    (state) => state.modalsReducer
-  );
+  const { isOpened, type, changed } = useSelector((state) => state.modalsReducer);
   console.log(changed);
   const allChannels = useSelector((state) => state.channelsReducer.channels);
   const dispatch = useDispatch();

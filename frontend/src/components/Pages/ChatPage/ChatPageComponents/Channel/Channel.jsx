@@ -8,12 +8,12 @@ import DropDownChannel from '../DropDownChannel/DropDownChannel';
 const Channel = ({ channel }) => {
   const { id, name, removable } = channel;
   const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId
+    (state) => state.channelsReducer.currentChannelId,
   );
   const variant = id === currentChannelId ? 'secondary' : 'light';
   const dispatch = useDispatch();
-  const handleClick = (id) => {
-    dispatch(setActualChannel(id));
+  const handleClick = (actualId) => {
+    dispatch(setActualChannel(actualId));
   };
 
   return (

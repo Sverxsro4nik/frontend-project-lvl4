@@ -1,17 +1,18 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { BsPlusSquare } from 'react-icons/bs';
 import { Button, Nav } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import Channel from '../Channel/Channel.jsx';
-import { useSelector, useDispatch } from 'react-redux';
 import { openWindow } from '../../../../../slices/modalSlice';
 import MainModal from '../MainModal/MainModal';
-import { useTranslation } from 'react-i18next';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();
   const allChannels = useSelector((state) =>
-    Object.values(state.channelsReducer.entities)
+    Object.values(state.channelsReducer.entities),
   );
+
   const dispatch = useDispatch();
 
   const openAddChannelWindow = () => {
@@ -33,9 +34,9 @@ const ChannelsPanel = () => {
           </Button>
         </div>
         <Nav
-          defaultActiveKey={'#general'}
+          defaultActiveKey="#general"
           className="flex-column nav-pills nav-fill px-2"
-          as={'ul'}
+          as="ul"
         >
           {allChannels.map((channel) => (
             <Nav.Item key={channel.id} className="w-100" as="li">
