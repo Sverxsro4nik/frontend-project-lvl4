@@ -46,10 +46,12 @@ const SocketProvider = ({ socket, children }) => {
     removeChannel: (id) => {
       socket.emit('removeChannel', { id });
     },
-    renameChannel: ({ name, id }) =>
-      socket.emit('renameChannel', { name, id }, (response) =>
-        console.log(response)
-      ),
+    renameChannel: ({ name, id }, cb) =>
+      socket.emit('renameChannel', { name, id }, (response) => {
+        if (response.status === 'ok') {
+          cb();
+        }
+      }),
   };
   return (
     <socketContext.Provider value={socketApi}>

@@ -47,10 +47,9 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
       body: activeChannel.name,
     },
     validationSchema: validationChannelsSchema(channelsName, t),
-    onSubmit: ({ body }) => {
+    onSubmit: async ({ body }) => {
       const cleanedName = leoProfanity.clean(body);
-      renameChannel({ id: changed, name: cleanedName });
-      closeModal();
+      renameChannel({ id: changed, name: cleanedName }, closeModal);
     },
   });
   return (
