@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "private": true,
   "dependencies": {
+    "@playwright/test": "^1.25.0",
     "@reduxjs/toolkit": "^1.8.3",
     "@rollbar/react": "^0.11.1",
     "@testing-library/jest-dom": "^5.16.4",
@@ -27,8 +28,7 @@
     "react-toastify": "^9.0.8",
     "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11",
-    "@playwright/test": "^1.25.0"
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
