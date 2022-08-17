@@ -74,9 +74,7 @@ const Add = ({ closeHandler, isOpened }) => {
               value={formik.values.name}
               isInvalid={formik.touched && formik.errors.name}
             />
-            <FormLabel className="visually-hidden" htmlFor="name">
-              {t('modals.name')}
-            </FormLabel>
+            <FormLabel htmlFor="name">{t('modals.name')}</FormLabel>
             <FormControl.Feedback type="invalid">
               {formik.errors.name}
             </FormControl.Feedback>

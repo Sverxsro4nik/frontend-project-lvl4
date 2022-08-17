@@ -1,13 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import {
-  Modal,
-  FormGroup,
-  FormControl,
-  Form,
-  FormLabel,
-} from 'react-bootstrap';
+import { Modal, FormControl, Form, FormLabel } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSocketApi } from '../../hooks/hooks.js';
 import { toast } from 'react-toastify';
@@ -16,7 +10,7 @@ import * as yup from 'yup';
 
 const validationChannelsSchema = (channels, text) =>
   yup.object().shape({
-    body: yup
+    rename: yup
       .string()
       .trim()
       .required(text('required'))
@@ -44,40 +38,36 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
   };
   const formik = useFormik({
     initialValues: {
-      body: activeChannel.name,
+      rename: activeChannel.name,
     },
     validationSchema: validationChannelsSchema(channelsName, t),
-    onSubmit: async ({ body }) => {
-      const cleanedName = leoProfanity.clean(body);
+    onSubmit: async ({ rename }) => {
+      const cleanedName = leoProfanity.clean(rename);
       renameChannel({ id: changed, name: cleanedName }, closeModal);
     },
   });
   return (
     <Modal show={isOpened} onHide={closeHandler} centered>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton={closeHandler}>
         <Modal.Title>{t('modals.renameChannel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit}>
-          <FormGroup>
-            <FormControl
-              data-testid="input-body"
-              ref={refContainer}
-              name="body"
-              id="body"
-              required=""
-              onChange={formik.handleChange}
-              value={formik.values.body}
-              isInvalid={formik.errors.body && formik.touched}
-            />
-            <FormLabel className="visually-hidden" htmlFor="body">
-              {t('modals.name')}
-            </FormLabel>
-          </FormGroup>
+          <FormControl
+            data-testid="body"
+            className="mb-2"
+            type="text"
+            ref={refContainer}
+            name="rename"
+            id="rename"
+            onChange={formik.handleChange}
+            value={formik.values.rename}
+            isInvalid={formik.errors.body && formik.touched}
+          />
+          <FormLabel htmlFor="rename">Имя канала</FormLabel>
           <FormControl.Feedback type="invalid" className="d-block">
-            {formik.errors.body}
+            {formik.errors.rename}
           </FormControl.Feedback>
-          <br />
           <div className="d-flex justify-content-end">
             <FormControl
               className="btn btn-primary"
