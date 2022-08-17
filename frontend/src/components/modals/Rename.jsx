@@ -27,7 +27,7 @@ const validationChannelsSchema = (channels, text) =>
 
 const Rename = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
-  const notify = () => toast(t('toast.renamedChannel'));
+  const notify = () => toast.success(t('toast.renamedChannel'));
   const allChannels = useSelector((state) =>
     Object.values(state.channelsReducer.entities)
   );
