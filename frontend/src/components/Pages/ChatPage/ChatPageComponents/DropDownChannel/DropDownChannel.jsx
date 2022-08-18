@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
-import { ButtonGroup } from 'react-bootstrap';
+import React from 'react';
+import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { openWindow } from '../../../../../slices/modalSlice';
