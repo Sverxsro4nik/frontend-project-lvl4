@@ -9,7 +9,10 @@ const MessagesPanelHeader = ({ activeChannel, messagesCount }) => {
       <p className="m-0">
         #
         {' '}
-        {activeChannel ? activeChannel.name : ''}</p>
+        {
+          activeChannel ? activeChannel.name : ''
+        }
+      </p>
       <span className="text-muted">
         {messagesCount}
         {' '}
