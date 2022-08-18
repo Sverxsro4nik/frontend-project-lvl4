@@ -35,11 +35,11 @@ function MainPage({ socket }) {
             path="/"
             element={
               (
-              <SocketProvider socket={socket}>
-                <ChatRoute>
-                  <ChatPage />
-                </ChatRoute>
-              </SocketProvider>
+                <SocketProvider socket={socket}>
+                  <ChatRoute>
+                    <ChatPage />
+                  </ChatRoute>
+                </SocketProvider>
               )
             }
           />

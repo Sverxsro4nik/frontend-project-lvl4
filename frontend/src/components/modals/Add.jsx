@@ -60,7 +60,9 @@ const Add = ({ closeHandler, isOpened }) => {
       <Modal show={isOpened} onHide={closeHandler} centered>
         <Modal.Header closeButton={closeHandler}>
           <Modal.Title>
-            {' '}{t('modals.addChannel')}{' '}
+            {' '}
+            {t('modals.addChannel')}
+            {' '}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

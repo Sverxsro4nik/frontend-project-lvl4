@@ -24,7 +24,7 @@ const ChannelsPanel = () => {
           <span>{t('channels')}</span>
           <Button
             variant="light"
-            className='p-0 text-primary btn btn-group-vertical'
+            className="p-0 text-primary btn btn-group-vertical"
             onClick={openAddChannelWindow}
           >
             <BsPlusSquare />
