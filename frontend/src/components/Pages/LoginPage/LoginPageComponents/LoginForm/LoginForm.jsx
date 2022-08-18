@@ -75,31 +75,31 @@ function LoginForm() {
           <h1 className="text-center mb-4">{t('enter')}</h1>
           <Form.Group className="form-floating mb-3">
             <Form.Control
-              type={'text'}
+              type="text"
               className={`form-control${!errors.username ? '' : ' in-valid'}`}
-              name={'username'}
+              name="username"
               ref={userContainer}
               onChange={handleChange}
               onBlur={handleBlur}
               isInvalid={isAuth}
-              autoComplete={'username'}
+              autoComplete="username"
               placeholder={t('username')}
-              id={'username'}
+              id="username"
               value={values.username}
             />
             <Form.Label htmlFor="username">{t('username')}</Form.Label>
           </Form.Group>
           <Form.Group className="form-floating mb-3">
             <Form.Control
-              type={'password'}
+              type="password"
               className={`form-control${!errors.password ? '' : ' in-valid'}`}
-              name={'password'}
+              name="password"
               onChange={handleChange}
               onBlur={handleBlur}
               isInvalid={isAuth}
-              autoComplete={'password'}
+              autoComplete="password"
               placeholder={t('password')}
-              id={'password'}
+              id="password"
               value={values.password}
             />
             <Form.Label htmlFor="password">{t('password')}</Form.Label>

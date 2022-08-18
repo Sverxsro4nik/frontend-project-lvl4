@@ -28,7 +28,9 @@ const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>{t('notAccount')} </span>
+                <span>
+                  {t('notAccount')}
+                </span>
                 <a href={getRoutes.signUpPage()}>{t('signUp')}</a>
               </div>
             </Card.Footer>

@@ -19,20 +19,21 @@ const ChannelsPanel = () => {
   return (
     <>
       <MainModal />
-      <div className='col-4 col-md-2 border-end pt-5 px-0 bg-light'>
-        <div className='d-flex justify-content-between mb-2 ps-4 pe-2'>
+      <div className="col-4 col-md-2 border-end pt-5 px-0 bg-light">
+        <div className="d-flex justify-content-between mb-2 ps-4 pe-2">
           <span>{t('channels')}</span>
           <Button
-            variant='light'
+            variant="light"
             className='p-0 text-primary btn btn-group-vertical'
-            onClick={openAddChannelWindow}>
+            onClick={openAddChannelWindow}
+          >
             <BsPlusSquare />
-            <span className='visually-hidden'>+</span>
+            <span className="visually-hidden">+</span>
           </Button>
         </div>
-        <Nav defaultActiveKey='#general' className='flex-column nav-pills nav-fill px-2' as='ul'>
+        <Nav defaultActiveKey="#general" className="flex-column nav-pills nav-fill px-2" as="ul">
           {allChannels.map((channel) => (
-            <Nav.Item key={channel.id} className='w-100' as='li'>
+            <Nav.Item key={channel.id} className="w-100" as="li">
               <Channel channel={channel} />
             </Nav.Item>
           ))}

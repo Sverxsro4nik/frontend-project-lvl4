@@ -21,31 +21,34 @@ const ChatRoute = ({ children }) => {
   const { user } = useAuth('');
   const location = useLocation();
 
-  return user ? children : <Navigate to='login' state={{ from: location }} />;
+  return user ? children : <Navigate to="login" state={{ from: location }} />;
 };
 
 function MainPage({ socket }) {
   return (
-    <div className='d-flex flex-column h-100'>
+    <div className="d-flex flex-column h-100">
       <Router>
         <Nav />
         <Routes>
           <Route
             exact
-            path='/'
+            path="/"
             element={
+              (
               <SocketProvider socket={socket}>
                 <ChatRoute>
                   <ChatPage />
                 </ChatRoute>
               </SocketProvider>
+              )
             }
           />
           (
           <Route path={getRoutes.loginPage()} element={<LoginPage />} />
           <Route path={getRoutes.chatPage()} element={<ChatPage />} />
           <Route path={getRoutes.signUpPage()} element={<SignUp />} />
-          <Route path='*' element={<NotFound />} />)
+          <Route path="*" element={<NotFound />} />
+          )
         </Routes>
         <ToastContainer autoClose={5000} />
       </Router>

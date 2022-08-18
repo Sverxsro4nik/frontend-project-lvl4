@@ -7,7 +7,9 @@ const NotFound = () => {
   const location = useLocation();
   return (
     <div>
-      {t('notFound')} {location.pathname}
+      {t('notFound')}
+      {' '}
+      {location.pathname}
     </div>
   );
 };

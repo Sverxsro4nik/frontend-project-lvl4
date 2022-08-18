@@ -23,16 +23,17 @@ const DropDownChannel = ({
   };
 
   return (
-    <Dropdown className='d-flex btn-group' as={ButtonGroup}>
+    <Dropdown className="d-flex btn-group" as={ButtonGroup}>
       <Button
         variant={variant}
-        className='w-100 rounded-0 text-start text-truncate btn'
-        onClick={() => handleClick(id)}>
-        <span className='me-1'>#</span>
+        className="w-100 rounded-0 text-start text-truncate btn"
+        onClick={() => handleClick(id)}
+      >
+        <span className="me-1">#</span>
         {name}
       </Button>
       <Dropdown.Toggle variant={variant}>
-        <span className='visually-hidden'>{t('channelManagement')}</span>
+        <span className="visually-hidden">{t('channelManagement')}</span>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

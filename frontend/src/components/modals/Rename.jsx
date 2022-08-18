@@ -64,7 +64,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
             value={formik.values.rename}
             isInvalid={formik.errors.body && formik.touched}
           />
-          <FormLabel htmlFor="rename" className='visually-hidden'>Имя канала</FormLabel>
+          <FormLabel htmlFor="rename" className="visually-hidden">Имя канала</FormLabel>
           <FormControl.Feedback type="invalid" className="d-block">
             {formik.errors.rename}
           </FormControl.Feedback>

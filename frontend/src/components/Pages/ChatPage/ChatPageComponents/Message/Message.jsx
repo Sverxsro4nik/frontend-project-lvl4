@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
+
 const Message = ({ message }) => {
   const { id, username, text } = message;
   return (

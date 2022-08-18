@@ -59,7 +59,9 @@ const Add = ({ closeHandler, isOpened }) => {
     <>
       <Modal show={isOpened} onHide={closeHandler} centered>
         <Modal.Header closeButton={closeHandler}>
-          <Modal.Title> {t('modals.addChannel')} </Modal.Title>
+          <Modal.Title>
+            {' '}{t('modals.addChannel')}{' '}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
@@ -75,7 +77,7 @@ const Add = ({ closeHandler, isOpened }) => {
               value={formik.values.name}
               isInvalid={formik.touched && formik.errors.name}
             />
-            <FormLabel className='visually-hidden' htmlFor="name">{t('modals.name')}</FormLabel>
+            <FormLabel className="visually-hidden" htmlFor="name">{t('modals.name')}</FormLabel>
             <FormControl.Feedback type="invalid">
               {formik.errors.name}
             </FormControl.Feedback>
