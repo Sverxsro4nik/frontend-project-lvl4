@@ -24,12 +24,12 @@ const MessagesPanel = () => {
           activeChannel={activeChannel}
           messagesCount={activeChannelMessages.length}
         />
-        <div id="messages-box" className="chat-messages overflow-auto px-5">
+        <div id="messages-box" className="chat-messages px-5 overflow-auto h-100">
           {activeChannelMessages.map((message) => (
             <Message message={message} key={message.id} />
           ))}
-          <NewMessageForm activeChannel={activeChannel} />
         </div>
+        <NewMessageForm activeChannel={activeChannel} />
       </div>
     </div>
   );

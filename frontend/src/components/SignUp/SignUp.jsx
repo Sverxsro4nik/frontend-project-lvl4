@@ -16,7 +16,7 @@ import {
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import ImageSignUp from './signUpImage.jpg';
+import ImageSignUp from '../../assets/signUpImage.jpg';
 import getRoutes from '../../routes/routes';
 import { useAuth } from '../../hooks/hooks';
 

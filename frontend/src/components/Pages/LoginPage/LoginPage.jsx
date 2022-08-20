@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import getRoutes from '../../../routes/routes';
-import imagePath from './loginPage.jpeg';
+import imagePath from '../../../assets/loginPage.jpeg';
 import LoginForm from './LoginPageComponents/LoginForm/LoginForm.jsx';
 
 const LoginPage = () => {

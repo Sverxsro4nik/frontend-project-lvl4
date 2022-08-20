@@ -13,7 +13,6 @@ import {
 import store from '../slices/index';
 
 const SocketProvider = ({ socket, children }) => {
-  console.log(store);
   useEffect(() => {
     socket.on('newMessage', (payload) => {
       store.dispatch(addMessage(payload));
