@@ -6,7 +6,7 @@ import leoProfanity from 'leo-profanity';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
-import { useAuth, useSocketApi } from '../../../../../hooks/hooks.js';
+import { useAuth, useSocketApi } from '../../../../hooks/hooks.js';
 
 const NewMessageForm = ({ activeChannel }) => {
   const { t } = useTranslation();

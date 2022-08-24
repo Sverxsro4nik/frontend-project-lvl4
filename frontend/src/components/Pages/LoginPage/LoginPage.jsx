@@ -5,7 +5,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import getRoutes from '../../../routes/routes';
 import imagePath from '../../../assets/loginPage.jpeg';
-import LoginForm from './LoginPageComponents/LoginForm/LoginForm.jsx';
+import LoginForm from './LoginForm.jsx';
 
 const LoginPage = () => {
   const { t } = useTranslation();

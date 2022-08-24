@@ -4,7 +4,7 @@ import React from 'react';
 import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { openWindow } from '../../../../../slices/modalSlice';
+import { openWindow } from '../../../../slices/modalSlice';
 
 const DropDownChannel = ({
   name, id, handleClick, currentChannelId,

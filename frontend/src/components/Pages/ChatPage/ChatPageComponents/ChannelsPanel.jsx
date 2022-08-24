@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BsPlusSquare } from 'react-icons/bs';
 import { Button, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import Channel from '../Channel/Channel.jsx';
-import { openWindow } from '../../../../../slices/modalSlice';
-import MainModal from '../MainModal/MainModal.jsx';
+import Channel from './Channel.jsx';
+import { openWindow } from '../../../../slices/modalSlice';
+import MainModal from './MainModal.jsx';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();

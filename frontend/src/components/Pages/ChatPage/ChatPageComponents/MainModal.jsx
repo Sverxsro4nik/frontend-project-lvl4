@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import modalsWindow from '../../../../modals';
-import { closeModal } from '../../../../../slices/modalSlice';
+import modalsWindow from '../../../modals';
+import { closeModal } from '../../../../slices/modalSlice';
 
 const MainModal = () => {
   const { isOpened, type, changed } = useSelector((state) => state.modalsReducer);

@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Message from '../Message/Message.jsx';
-import MessagesPanelHeader from '../MessagesPanelHeader/MessagesPanelHeader.jsx';
-import NewMessageForm from '../NewMessageForm/NewMessageForm.jsx';
+import Message from './Message.jsx';
+import MessagesPanelHeader from './MessagesPanelHeader.jsx';
+import NewMessageForm from './NewMessageForm.jsx';
 
 const MessagesPanel = () => {
   const allMessages = useSelector((state) => Object.values(state.messagesReducer.entities));
