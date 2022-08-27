@@ -1,33 +1,11 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { socketContext } from './contex.js';
-
-import { addMessage } from '../slices/messagesSlice.js';
-import {
-  addChannel,
-  setActualChannel,
-  deleteChannel,
-  channelRename,
-} from '../slices/channelsSlice.js';
 import store from '../slices/index';
+import { setActualChannel } from '../slices/channelsSlice.js';
 
 const SocketProvider = ({ socket, children }) => {
-  useEffect(() => {
-    socket.on('newMessage', (payload) => {
-      store.dispatch(addMessage(payload));
-    });
-    socket.on('newChannel', (payload) => {
-      store.dispatch(addChannel(payload));
-    });
-    socket.on('removeChannel', (payload) => {
-      store.dispatch(deleteChannel(payload.id));
-    });
-    socket.on('renameChannel', ({ id, name }) => {
-      store.dispatch(channelRename({ id, changes: { name } }));
-    });
-  }, [socket]);
-
   const socketApi = {
     sendMessage: (...args) => socket.emit('newMessage', ...args),
     newChannel: (name, cb) => {

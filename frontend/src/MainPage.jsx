@@ -15,7 +15,7 @@ import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './hooks/hooks.js';
 import getRoutes from './routes/routes.js';
 import SignUp from './components/SignUp/SignUp.jsx';
-import SocketProvider from './context/SocketProvider.jsx';
+import SocketProvider from './context/ApiProvider.jsx';
 
 const ChatRoute = ({ children }) => {
   const { user } = useAuth('');

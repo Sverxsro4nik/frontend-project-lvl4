@@ -8,6 +8,8 @@ import AuthProvider from './context/AuthProvider.jsx';
 
 import resources from './locales/locales.js';
 import MainPage from './MainPage.jsx';
+import { addMessage } from './slices/messagesSlice.js';
+import { addChannel, deleteChannel, channelRename } from './slices/channelsSlice.js';
 import store from './slices/index.js';
 
 const rollbarrConfig = {
@@ -16,6 +18,18 @@ const rollbarrConfig = {
 };
 
 const init = async (socket) => {
+  socket.on('newMessage', (payload) => {
+    store.dispatch(addMessage(payload));
+  });
+  socket.on('newChannel', (payload) => {
+    store.dispatch(addChannel(payload));
+  });
+  socket.on('removeChannel', (payload) => {
+    store.dispatch(deleteChannel(payload.id));
+  });
+  socket.on('renameChannel', ({ id, name }) => {
+    store.dispatch(channelRename({ id, changes: { name } }));
+  });
   const defaultlanguage = 'ru';
   await i18next.use(initReactI18next).init({
     lng: defaultlanguage,
