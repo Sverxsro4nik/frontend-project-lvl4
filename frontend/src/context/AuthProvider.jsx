@@ -3,8 +3,9 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { AuthContext } from './contex.js';
 
 function AuthProvider({ children }) {
+  const savedUserData = JSON.parse(localStorage.getItem('user'));
   const getAuthHeader = () => {
-    const userId = JSON.parse(localStorage.getItem('user'));
+    const userId = savedUserData;
     if (userId && userId.token) {
       return { Authorization: `Bearer ${userId.token}` };
     }
@@ -12,7 +13,6 @@ function AuthProvider({ children }) {
     return {};
   };
 
-  const savedUserData = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(
     savedUserData ? { username: savedUserData.username } : null,
   );
