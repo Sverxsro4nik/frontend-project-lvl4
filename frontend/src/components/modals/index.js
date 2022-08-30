@@ -7,5 +7,6 @@ const modals = {
   removing: Remove,
   renaming: Rename,
 };
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (modalName) => modals[modalName];
+const modalWindows = (modalName) => modals[modalName];
+
+export default modalWindows;

@@ -6,10 +6,11 @@ import { useTranslation } from 'react-i18next';
 import Channel from './Channel.jsx';
 import { openWindow } from '../../../../slices/modalSlice';
 import MainModal from './MainModal.jsx';
+import { getChannels } from '../../../../slices/selectors.js';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();
-  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
+  const allChannels = useSelector(getChannels);
 
   const dispatch = useDispatch();
 

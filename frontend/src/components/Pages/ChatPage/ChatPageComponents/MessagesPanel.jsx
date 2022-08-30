@@ -1,16 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { getChannels, getMessages, getActualChannel } from '../../../../slices/selectors.js';
 import Message from './Message.jsx';
 import MessagesPanelHeader from './MessagesPanelHeader.jsx';
 import NewMessageForm from './NewMessageForm.jsx';
 
 const MessagesPanel = () => {
-  const allMessages = useSelector((state) => Object.values(state.messagesReducer.entities));
-  const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId,
-  );
-  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
+  const allMessages = useSelector(getMessages);
+  const currentChannelId = useSelector(getActualChannel);
+  const allChannels = useSelector(getChannels);
   const [activeChannel] = allChannels.filter(
     ({ id }) => id === currentChannelId,
   );

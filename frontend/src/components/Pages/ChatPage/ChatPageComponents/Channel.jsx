@@ -4,13 +4,12 @@ import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setActualChannel } from '../../../../slices/channelsSlice.js';
+import { getActualChannel } from '../../../../slices/selectors.js';
 import DropDownChannel from './DropDownChannel.jsx';
 
 const Channel = ({ channel }) => {
   const { id, name, removable } = channel;
-  const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId,
-  );
+  const currentChannelId = useSelector(getActualChannel);
   const variant = id === currentChannelId ? 'secondary' : 'light';
   const dispatch = useDispatch();
   const handleClick = (actualId) => {
