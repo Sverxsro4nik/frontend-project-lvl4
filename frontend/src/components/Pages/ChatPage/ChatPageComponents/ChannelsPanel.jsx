@@ -34,7 +34,7 @@ const ChannelsPanel = () => {
         <Nav defaultActiveKey="#general" className="flex-column nav-pills nav-fill px-2" as="ul">
           {allChannels.map((channel) => (
             <Nav.Item key={channel.id} className="w-100" as="li">
-              <Channel channel={channel} />
+                <Channel channel={channel} />
             </Nav.Item>
           ))}
         </Nav>
