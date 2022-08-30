@@ -32,22 +32,22 @@ const SignUp = () => {
   const registrationValidation = yup.object().shape({
     username: yup
       .string()
-      .min(3, t('signUpPage.usernameLenght'))
-      .max(20, t('signUpPage.usernameLenght'))
+      .min(3, 'signUpPage.usernameLenght')
+      .max(20, 'signUpPage.usernameLenght')
       .trim()
-      .typeError(t('required'))
-      .required(t('required')),
+      .typeError('required')
+      .required('required'),
     password: yup
       .string()
       .trim()
-      .min(6, t('signUpPage.minPasswordLenght'))
-      .typeError(t('required'))
-      .required(t('required')),
+      .min(6, 'signUpPage.minPasswordLenght')
+      .typeError('required')
+      .required('required'),
     confirmPassword: yup
       .string()
       .test(
         'confirmPassword',
-        t('signUpPage.confirmPassword'),
+        'signUpPage.confirmPassword',
         (password, context) => password === context.parent.password,
       ),
   });
@@ -119,7 +119,7 @@ const SignUp = () => {
                       type="invalid"
                       className="invalid-tooltip"
                     >
-                      {formik.errors.username}
+                      {t(formik.errors.username)}
                     </Form.Control.Feedback>
                   ) : (
                     <Form.Control.Feedback
@@ -150,7 +150,7 @@ const SignUp = () => {
                       type="invalid"
                       className="invalid-tooltip"
                     >
-                      {formik.errors.password}
+                      {t(formik.errors.password)}
                     </Form.Control.Feedback>
                   ) : (
                     <Form.Control.Feedback
@@ -182,7 +182,7 @@ const SignUp = () => {
                       type="invalid"
                       className="invalid-tooltip"
                     >
-                      {formik.errors.confirmPassword}
+                      {t(formik.errors.confirmPassword)}
                     </Form.Control.Feedback>
                   ) : (
                     <Form.Control.Feedback

@@ -33,7 +33,7 @@ function LoginForm() {
   }, []);
 
   const validateSchema = yup.object().shape({
-    username: yup.string().typeError(t('required')).required(t('required')),
+    username: yup.string().typeError(('required')).required(t('required')),
     password: yup.string().typeError(t('required')).required(t('required')),
   });
   return (

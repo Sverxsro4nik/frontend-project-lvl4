@@ -12,20 +12,21 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { useSocketApi } from '../../hooks/hooks.js';
+import { getChannels } from '../../slices/selectors.js';
 
-const validationChannelsSchema = (channels, text) => yup.object().shape({
+const validationChannelsSchema = (channels) => yup.object().shape({
   name: yup
     .string()
     .trim()
-    .required(text('required'))
-    .min(3, text('channelNameLenght'))
-    .max(20, text('channelNameLenght'))
-    .notOneOf(channels, text('duplicate')),
+    .required('required')
+    .min(3, 'channelNameLenght')
+    .max(20, 'channelNameLenght')
+    .notOneOf(channels, 'duplicate'),
 });
 
 const Add = ({ closeHandler, isOpened }) => {
   const { t } = useTranslation();
-  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
+  const allChannels = useSelector(getChannels);
   const { newChannel } = useSocketApi();
   const channelsName = allChannels.map((channel) => channel.name);
   const refContainer = useRef('');
@@ -43,7 +44,7 @@ const Add = ({ closeHandler, isOpened }) => {
     initialValues: {
       name: '',
     },
-    validationSchema: validationChannelsSchema(channelsName, t),
+    validationSchema: validationChannelsSchema(channelsName),
     onSubmit: (values) => {
       const { name } = values;
       const cleanedName = leoProfanity.clean(name);
@@ -81,7 +82,7 @@ const Add = ({ closeHandler, isOpened }) => {
             />
             <FormLabel className="visually-hidden" htmlFor="name">{t('modals.name')}</FormLabel>
             <FormControl.Feedback type="invalid">
-              {formik.errors.name}
+              {t(formik.errors.name)}
             </FormControl.Feedback>
             <div className="d-flex justify-content-end">
               <FormControl

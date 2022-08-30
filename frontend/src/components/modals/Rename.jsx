@@ -10,21 +10,22 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import leoProfanity from 'leo-profanity';
 import { useSocketApi } from '../../hooks/hooks.js';
+import { getChannels } from '../../slices/selectors.js';
 
-const validationChannelsSchema = (channels, text) => yup.object().shape({
+const validationChannelsSchema = (channels) => yup.object().shape({
   rename: yup
     .string()
     .trim()
-    .required(text('required'))
-    .min(3, text('channelNameLenght'))
-    .max(20, text('channelNameLenght'))
-    .notOneOf(channels, text('duplicate')),
+    .required('required')
+    .min(3, 'channelNameLenght')
+    .max(20, 'channelNameLenght')
+    .notOneOf(channels, 'duplicate'),
 });
 
 const Rename = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast.success(t('toast.renamedChannel'));
-  const allChannels = useSelector((state) => Object.values(state.channelsReducer.entities));
+  const allChannels = useSelector(getChannels);
   const refContainer = useRef('');
   useEffect(() => {
     refContainer.current.focus();
@@ -40,7 +41,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
     initialValues: {
       rename: activeChannel.name,
     },
-    validationSchema: validationChannelsSchema(channelsName, t),
+    validationSchema: validationChannelsSchema(channelsName),
     onSubmit: async ({ rename }) => {
       const cleanedName = leoProfanity.clean(rename);
       renameChannel({ id: changed, name: cleanedName }, closeModal);
@@ -66,7 +67,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
           />
           <FormLabel htmlFor="rename" className="visually-hidden">Имя канала</FormLabel>
           <FormControl.Feedback type="invalid" className="d-block">
-            {formik.errors.rename}
+            {t(formik.errors.rename)}
           </FormControl.Feedback>
           <div className="d-flex justify-content-end">
             <FormControl
