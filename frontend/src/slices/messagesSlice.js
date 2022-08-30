@@ -5,7 +5,7 @@ import { deleteChannel } from './channelsSlice.js';
 import getRoutes from '../routes/routes';
 
 export const fetchMessages = createAsyncThunk(
-  'channels/fetchChannels',
+  'messages/fetchMessages',
   async (payload) => {
     const { data } = await axios.get(getRoutes.dataPath(), {
       headers: payload,
