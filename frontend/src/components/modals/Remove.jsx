@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { setActualChannel } from '../../slices/channelsSlice.js';
+import { getActualChannel } from '../../slices/selectors.js';
 
 import { useSocketApi } from '../../hooks/hooks';
 
@@ -13,9 +14,7 @@ const Remove = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast.success(t('toast.removeChannel'));
   const { removeChannel } = useSocketApi();
-  const currentChannelId = useSelector(
-    (state) => state.channelsReducer.currentChannelId,
-  );
+  const currentChannelId = useSelector(getActualChannel);
   const dispatch = useDispatch();
   const deleteChannel = (e) => {
     e.preventDefault();
