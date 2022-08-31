@@ -26,7 +26,7 @@ const ChatRoute = ({ children }) => {
 const AuthRoute = ({ children }) => {
   const { user } = useAuth('');
   if (user) {
-    return <Navigate to="/" replace/>;
+    return <Navigate to="/" replace />;
   }
   return children;
 };
@@ -59,15 +59,15 @@ function MainPage({ socket }) {
                 <LoginPage />
               </AuthRoute>
             )}
-            />
-            <Route
+          />
+          <Route
             path={getRoutes.signUpPage()}
             element={(
               <AuthRoute>
                 <SignUp />
               </AuthRoute>
             )}
-            />
+          />
           <Route path="*" element={<NotFound />} />
           )
         </Routes>
