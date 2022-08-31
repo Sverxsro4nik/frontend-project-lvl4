@@ -20,5 +20,10 @@
   "homepage": "https://github.com/Sverxsro4nik/frontend-project-lvl4#readme",
   "dependencies": {
     "@hexlet/chat-server": "^1.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.31.1"
   }
 }
