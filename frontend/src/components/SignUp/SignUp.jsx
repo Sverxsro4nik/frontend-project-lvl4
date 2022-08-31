@@ -202,6 +202,14 @@ const SignUp = () => {
                 </Button>
               </Form>
             </Card.Body>
+            <Card.Footer className="p-4">
+              <div className="text-center">
+                <span>
+                  {t('haveAccount')}
+                </span>
+                <a href={getRoutes.loginPage()}>{t('enter')}</a>
+              </div>
+            </Card.Footer>
           </Card>
         </Col>
       </Row>

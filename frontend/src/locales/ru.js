@@ -31,6 +31,7 @@ const ruLocales = {
     messages: 'сообщений',
     messageFormPlaceholder: 'Введите сообщение...',
     notAccount: 'Нет аккаунта?',
+    haveAccount: 'Есть аккаунт?',
     signUp: 'Регистрация',
     enter: 'Войти',
     username: 'Ваш ник',

@@ -23,6 +23,13 @@ const ChatRoute = ({ children }) => {
 
   return user ? children : <Navigate to="login" state={{ from: location }} />;
 };
+const AuthRoute = ({ children }) => {
+  const { user } = useAuth('');
+  if (user) {
+    return <Navigate to="/" replace/>;
+  }
+  return children;
+};
 
 function MainPage({ socket }) {
   return (
@@ -44,9 +51,23 @@ function MainPage({ socket }) {
             }
           />
           (
-          <Route path={getRoutes.loginPage()} element={<LoginPage />} />
           <Route path={getRoutes.chatPage()} element={<ChatPage />} />
-          <Route path={getRoutes.signUpPage()} element={<SignUp />} />
+          <Route
+            path={getRoutes.loginPage()}
+            element={(
+              <AuthRoute>
+                <LoginPage />
+              </AuthRoute>
+            )}
+            />
+            <Route
+            path={getRoutes.signUpPage()}
+            element={(
+              <AuthRoute>
+                <SignUp />
+              </AuthRoute>
+            )}
+            />
           <Route path="*" element={<NotFound />} />
           )
         </Routes>
