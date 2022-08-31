@@ -37,7 +37,9 @@ const ruLocales = {
     username: 'Ваш ник',
     password: 'Пароль',
     noValidUsername: 'Неверные имя пользователя или пароль',
-    notFound: 'Not Found Page',
+    notFound: 'Страница не найдена',
+    youCan: 'Но вы можете перейти ',
+    mainPage: 'на главную страницу',
     signUpPage: {
       usernameLenght: 'От 3 до 20 символов',
       minPasswordLenght: 'Не менее 6 символов',
