@@ -17,8 +17,7 @@ const modalsReducer = createSlice({
       state.type = type;
       state.changed = id ?? null;
     },
-    // eslint-disable-next-line no-unused-vars
-    closeModal: (state, { payload }) => {
+    closeModal: (state) => {
       state.isOpened = false;
       state.type = null;
       state.changed = null;
