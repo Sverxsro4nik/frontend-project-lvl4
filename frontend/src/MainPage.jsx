@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
 import {
-  BrowserRouter as Router, Routes, Route, useLocation, Navigate,
+  BrowserRouter as Router, Routes, Route, Navigate, Outlet,
 } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
@@ -13,22 +13,16 @@ import NotFound from './components/Pages/NotFountPage/NotFound.jsx';
 
 import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
 import { useAuth } from './context/AuthProvider.js';
+import { ApiProvider } from './context/ApiProvider.js';
 import getRoutes from './routes/routes.js';
 import SignUp from './components/SignUp/SignUp.jsx';
-import { ApiProvider } from './context/ApiProvider.js';
 
-const ChatRoute = ({ children }) => {
-  const { user } = useAuth('');
-  const location = useLocation();
-
-  return user ? children : <Navigate to="login" state={{ from: location }} />;
-};
-const AuthRoute = ({ children }) => {
-  const { user } = useAuth('');
-  if (user) {
-    return <Navigate to="/" replace />;
+const MainOutlet = ({ goChatPage } = false) => {
+  const { user } = useAuth();
+  if (goChatPage) {
+    return user ? <Outlet /> : <Navigate to={getRoutes.loginPage()} />;
   }
-  return children;
+  return user ? <Navigate to={getRoutes.chatPage()} /> : <Outlet />;
 };
 
 function MainPage({ socket }) {
@@ -37,39 +31,18 @@ function MainPage({ socket }) {
       <Router>
         <Nav />
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              (
-                <ApiProvider socket={socket}>
-                  <ChatRoute>
-                    <ChatPage />
-                  </ChatRoute>
-                </ApiProvider>
-              )
-            }
-          />
-          (
-          <Route path={getRoutes.chatPage()} element={<ChatPage />} />
-          <Route
-            path={getRoutes.loginPage()}
-            element={(
-              <AuthRoute>
-                <LoginPage />
-              </AuthRoute>
-            )}
-          />
-          <Route
-            path={getRoutes.signUpPage()}
-            element={(
-              <AuthRoute>
-                <SignUp />
-              </AuthRoute>
-            )}
-          />
+          <Route path={getRoutes.chatPage()} element={<MainOutlet goChatPage/>}>
+            <Route path='' element={
+              <><ApiProvider socket={socket}><ChatPage /></ApiProvider></>
+            }/>
+          </Route>
+          <Route path={getRoutes.loginPage()} element={<MainOutlet />}>
+            <Route path='' element={<LoginPage />}/>
+          </Route>
+          <Route path={getRoutes.signUpPage()} element={<MainOutlet />}>
+            <Route path='' element={<SignUp />}/>
+          </Route>
           <Route path="*" element={<NotFound />} />
-          )
         </Routes>
         <ToastContainer autoClose={5000} />
       </Router>

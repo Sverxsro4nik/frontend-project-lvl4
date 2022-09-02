@@ -17,6 +17,7 @@ const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
   currentChannelId: 1,
   isLoading: false,
+  loadingError: null,
 });
 
 const channelsReducer = createSlice({
@@ -33,13 +34,15 @@ const channelsReducer = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchData.pending, (state) => {
       state.isLoading = true;
+      state.loadingError = null;
     }).addCase(fetchData.fulfilled, (state, { payload }) => {
       const { channels } = payload;
-      const loadData = (prevState, data) => channelsAdapter.setAll(prevState, data);
-      loadData(state, channels);
+      channelsAdapter.setAll(state, channels);
       state.isLoading = false;
-    }).addCase(fetchData.rejected, (state) => {
+      state.loadingError = null;
+    }).addCase(fetchData.rejected, (state, { error }) => {
       state.isLoading = false;
+      state.loadingError = error;
     });
   },
 });
@@ -52,6 +55,7 @@ export const getActualChannel = (state) => state.channels.currentChannelId;
 export const getChannelsName = (state) => getChannels(state).map((channel) => channel.name);
 
 export const getLoading = (state) => state.channels.isLoading;
+export const getError = (state) => state.channels.loadingError;
 
 export const {
   setChannels,
