@@ -37,7 +37,7 @@ function AuthProvider({ children }) {
       user,
       getAuthHeader,
     }),
-    [logIn, logOut, user, getAuthHeader],
+    [logIn, logOut, user],
   );
 
   return (

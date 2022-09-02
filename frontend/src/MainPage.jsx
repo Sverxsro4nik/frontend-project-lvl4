@@ -31,16 +31,17 @@ function MainPage({ socket }) {
       <Router>
         <Nav />
         <Routes>
-          <Route path={getRoutes.chatPage()} element={<MainOutlet goChatPage/>}>
-            <Route path='' element={
-              <><ApiProvider socket={socket}><ChatPage /></ApiProvider></>
-            }/>
+          <Route path={getRoutes.chatPage()} element={<MainOutlet goChatPage />}>
+            <Route
+              path=""
+              element={<><ApiProvider socket={socket}><ChatPage /></ApiProvider></>}
+            />
           </Route>
           <Route path={getRoutes.loginPage()} element={<MainOutlet />}>
-            <Route path='' element={<LoginPage />}/>
+            <Route path="" element={<LoginPage />} />
           </Route>
           <Route path={getRoutes.signUpPage()} element={<MainOutlet />}>
-            <Route path='' element={<SignUp />}/>
+            <Route path="" element={<SignUp />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
