@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { useSocketApi } from '../../hooks/hooks.js';
-import { getChannels } from '../../slices/channelsSlice.js';
+import { getChannelsName } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
   name: yup
@@ -26,9 +26,8 @@ const validationChannelsSchema = (channels) => yup.object().shape({
 
 const Add = ({ closeHandler, isOpened }) => {
   const { t } = useTranslation();
-  const allChannels = useSelector(getChannels);
   const { newChannel } = useSocketApi();
-  const channelsName = allChannels.map((channel) => channel.name);
+  const channelsName = useSelector(getChannelsName);
   const refContainer = useRef('');
   useEffect(() => {
     refContainer.current.focus();
