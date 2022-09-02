@@ -39,6 +39,8 @@ export const selectors = messagesAdapter.getSelectors(
   (state) => state.messages,
 );
 
+export const getMessages = (state) => selectors.selectAll(state);
+
 export const { setMessages, addMessage, removeMessage } = messagesSlice.actions;
 
 export default messagesSlice.reducer;

@@ -4,8 +4,7 @@ import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { setActualChannel } from '../../slices/channelsSlice.js';
-import { getActualChannel } from '../../slices/selectors.js';
+import { setActualChannel, getActualChannel } from '../../slices/channelsSlice.js';
 
 import { useSocketApi } from '../../hooks/hooks';
 

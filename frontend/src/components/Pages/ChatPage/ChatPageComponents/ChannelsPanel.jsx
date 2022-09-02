@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Channel from './Channel.jsx';
 import { openWindow } from '../../../../slices/modalSlice';
 import MainModal from './MainModal.jsx';
-import { getChannels } from '../../../../slices/selectors.js';
+import { getChannels } from '../../../../slices/channelsSlice.js';
 
 const ChannelsPanel = () => {
   const { t } = useTranslation();

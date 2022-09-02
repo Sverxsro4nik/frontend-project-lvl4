@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import modalsWindow from '../../../modals';
-import { closeModal } from '../../../../slices/modalSlice';
-import { getChannels, getModalValues } from '../../../../slices/selectors';
+import { closeModal, getModalValues } from '../../../../slices/modalSlice.js';
+import { getChannels } from '../../../../slices/channelsSlice.js';
 
 const MainModal = () => {
   const { isOpened, type, changed } = useSelector(getModalValues);

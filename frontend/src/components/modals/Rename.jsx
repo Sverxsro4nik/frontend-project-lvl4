@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import leoProfanity from 'leo-profanity';
 import { useSocketApi } from '../../hooks/hooks.js';
-import { getChannels } from '../../slices/selectors.js';
+import { getChannels } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
   rename: yup

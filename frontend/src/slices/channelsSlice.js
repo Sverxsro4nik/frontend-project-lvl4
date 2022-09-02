@@ -37,6 +37,9 @@ const channelsReducer = createSlice({
 
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 
+export const getChannels = (state) => selectors.selectAll(state);
+export const getActualChannel = (state) => state.channels.currentChannelId;
+
 export const {
   setChannels,
   setActualChannel,

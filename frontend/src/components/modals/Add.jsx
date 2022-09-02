@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { useSocketApi } from '../../hooks/hooks.js';
-import { getChannels } from '../../slices/selectors.js';
+import { getChannels } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
   name: yup

@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getChannels, getMessages, getActualChannel } from '../../../../slices/selectors.js';
+import { getChannels, getActualChannel } from '../../../../slices/channelsSlice.js';
+import { getMessages } from '../../../../slices/messagesSlice.js';
 import Message from './Message.jsx';
 import MessagesPanelHeader from './MessagesPanelHeader.jsx';
 import NewMessageForm from './NewMessageForm.jsx';
