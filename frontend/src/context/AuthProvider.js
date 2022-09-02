@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useCallback, useMemo } from 'react';
-import { AuthContext } from './contex.js';
+import React, {
+  useState, useCallback, useMemo, useContext, createContext,
+} from 'react';
+
+export const AuthContext = createContext({});
+const useAuth = () => useContext(AuthContext);
 
 function AuthProvider({ children }) {
   const savedUserData = JSON.parse(localStorage.getItem('user'));
@@ -41,4 +45,4 @@ function AuthProvider({ children }) {
   );
 }
 
-export default AuthProvider;
+export { AuthProvider, useAuth };

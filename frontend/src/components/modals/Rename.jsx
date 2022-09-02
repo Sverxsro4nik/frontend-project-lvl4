@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import leoProfanity from 'leo-profanity';
-import { useSocketApi } from '../../hooks/hooks.js';
+import { useApi } from '../../context/ApiProvider.js';
 import { getChannels } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
@@ -32,7 +32,7 @@ const Rename = ({ closeHandler, changed, isOpened }) => {
   }, []);
   const activeChannel = allChannels.find((channel) => channel.id === changed);
   const channelsName = allChannels.map((channel) => channel.name);
-  const { renameChannel } = useSocketApi();
+  const { renameChannel } = useApi();
   const closeModal = () => {
     closeHandler();
     notify();

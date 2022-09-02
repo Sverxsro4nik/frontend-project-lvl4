@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { useAuth } from '../../../hooks/hooks';
+import { useAuth } from '../../../context/AuthProvider.js';
 import { fetchData, getLoading } from '../../../slices/channelsSlice';
 import ChannelsPanel from './ChatPageComponents/ChannelsPanel.jsx';
 import MessagesPanel from './ChatPageComponents/MessagesPanel.jsx';

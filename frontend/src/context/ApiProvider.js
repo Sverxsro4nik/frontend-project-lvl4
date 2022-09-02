@@ -1,11 +1,17 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { socketContext } from './contex.js';
+import React, { useContext, createContext } from 'react';
 import store from '../slices/index';
 import { setActualChannel } from '../slices/channelsSlice.js';
 
-const SocketProvider = ({ socket, children }) => {
+const socketContext = createContext({});
+
+const useApi = () => {
+  const socketApi = useContext(socketContext);
+  return socketApi;
+};
+
+const ApiProvider = ({ socket, children }) => {
   const socketApi = {
     sendMessage: (...args) => socket.emit('newMessage', ...args),
     newChannel: (name, cb) => {
@@ -38,4 +44,4 @@ const SocketProvider = ({ socket, children }) => {
   );
 };
 
-export default SocketProvider;
+export { ApiProvider, useApi };

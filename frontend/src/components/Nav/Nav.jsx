@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Container, Navbar } from 'react-bootstrap';
-import { useAuth } from '../../hooks/hooks';
+import { useAuth } from '../../context/AuthProvider.js';
 
 const Nav = () => {
   const { t } = useTranslation();

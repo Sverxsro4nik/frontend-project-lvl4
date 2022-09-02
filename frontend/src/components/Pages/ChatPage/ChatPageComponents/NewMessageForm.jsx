@@ -6,12 +6,13 @@ import leoProfanity from 'leo-profanity';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
-import { useAuth, useSocketApi } from '../../../../hooks/hooks.js';
+import { useAuth } from '../../../../context/AuthProvider.js';
+import { useApi } from '../../../../context/ApiProvider.js';
 
 const NewMessageForm = ({ activeChannel }) => {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { sendMessage } = useSocketApi();
+  const { sendMessage } = useApi();
   const messageRef = useRef(null);
   const validationSchema = yup.object().shape({
     message: yup.string().trim().required('Required'),

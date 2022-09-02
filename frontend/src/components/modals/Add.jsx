@@ -11,7 +11,7 @@ import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { useSocketApi } from '../../hooks/hooks.js';
+import { useApi } from '../../context/ApiProvider.js';
 import { getChannelsName } from '../../slices/channelsSlice.js';
 
 const validationChannelsSchema = (channels) => yup.object().shape({
@@ -26,7 +26,7 @@ const validationChannelsSchema = (channels) => yup.object().shape({
 
 const Add = ({ closeHandler, isOpened }) => {
   const { t } = useTranslation();
-  const { newChannel } = useSocketApi();
+  const { newChannel } = useApi();
   const channelsName = useSelector(getChannelsName);
   const refContainer = useRef('');
   useEffect(() => {

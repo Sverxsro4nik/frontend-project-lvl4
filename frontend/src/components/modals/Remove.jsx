@@ -6,13 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { setActualChannel, getActualChannel } from '../../slices/channelsSlice.js';
 
-import { useSocketApi } from '../../hooks/hooks';
+import { useApi } from '../../context/ApiProvider.js';
 
 // BEGIN (write your solution here)
 const Remove = ({ closeHandler, changed, isOpened }) => {
   const { t } = useTranslation();
   const notify = () => toast.success(t('toast.removeChannel'));
-  const { removeChannel } = useSocketApi();
+  const { removeChannel } = useApi();
   const currentChannelId = useSelector(getActualChannel);
   const dispatch = useDispatch();
   const deleteChannel = (e) => {

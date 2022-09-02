@@ -4,7 +4,7 @@ import leoProfanity from 'leo-profanity';
 import { initReactI18next } from 'react-i18next';
 import { Provider as MainProvider } from 'react-redux';
 import { Provider } from '@rollbar/react';
-import AuthProvider from './context/AuthProvider.jsx';
+import { AuthProvider } from './context/AuthProvider.js';
 
 import resources from './locales/locales.js';
 import MainPage from './MainPage.jsx';

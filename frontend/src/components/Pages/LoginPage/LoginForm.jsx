@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import getRoutes from '../../../routes/routes.js';
-import { useAuth } from '../../../hooks/hooks.js';
+import { useAuth } from '../../../context/AuthProvider.js';
 
 const getData = async (username, password) => {
   const { token } = await axios

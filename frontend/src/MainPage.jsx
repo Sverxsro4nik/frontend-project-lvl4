@@ -12,10 +12,10 @@ import LoginPage from './components/Pages/LoginPage/LoginPage.jsx';
 import NotFound from './components/Pages/NotFountPage/NotFound.jsx';
 
 import ChatPage from './components/Pages/ChatPage/ChatPage.jsx';
-import { useAuth } from './hooks/hooks.js';
+import { useAuth } from './context/AuthProvider.js';
 import getRoutes from './routes/routes.js';
 import SignUp from './components/SignUp/SignUp.jsx';
-import SocketProvider from './context/ApiProvider.jsx';
+import { ApiProvider } from './context/ApiProvider.js';
 
 const ChatRoute = ({ children }) => {
   const { user } = useAuth('');
@@ -42,11 +42,11 @@ function MainPage({ socket }) {
             path="/"
             element={
               (
-                <SocketProvider socket={socket}>
+                <ApiProvider socket={socket}>
                   <ChatRoute>
                     <ChatPage />
                   </ChatRoute>
-                </SocketProvider>
+                </ApiProvider>
               )
             }
           />

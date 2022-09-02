@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 
 import ImageSignUp from '../../assets/signUpImage.jpg';
 import getRoutes from '../../routes/routes';
-import { useAuth } from '../../hooks/hooks';
+import { useAuth } from '../../context/AuthProvider.js';
 
 const SignUp = () => {
   const [failedRegistration, setFailedRegistration] = useState(false);
