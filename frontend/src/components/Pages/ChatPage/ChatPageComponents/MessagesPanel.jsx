@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getChannels, getActualChannel } from '../../../../slices/channelsSlice.js';
 import { getMessages } from '../../../../slices/messagesSlice.js';
@@ -8,6 +8,7 @@ import MessagesPanelHeader from './MessagesPanelHeader.jsx';
 import NewMessageForm from './NewMessageForm.jsx';
 
 const MessagesPanel = () => {
+  const divRef = useRef();
   const allMessages = useSelector(getMessages);
   const currentChannelId = useSelector(getActualChannel);
   const allChannels = useSelector(getChannels);
@@ -17,6 +18,9 @@ const MessagesPanel = () => {
   const activeChannelMessages = allMessages.filter(
     (message) => message.channelId === currentChannelId,
   );
+  useEffect(() => {
+    divRef.current.scrollTop = divRef.current.scrollHeight;
+  }, [activeChannelMessages.length]);
   return (
     <div className="col p-0 h-100">
       <div className="d-flex flex-column h-100">
@@ -24,7 +28,7 @@ const MessagesPanel = () => {
           activeChannel={activeChannel}
           messagesCount={activeChannelMessages.length}
         />
-        <div id="messages-box" className="chat-messages px-5 overflow-auto h-100">
+        <div id="messages-box" className="chat-messages px-5 overflow-auto h-100" ref={divRef}>
           {activeChannelMessages.map((message) => (
             <Message message={message} key={message.id} />
           ))}
